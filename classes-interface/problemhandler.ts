@@ -3,11 +3,22 @@ import { appContext } from "./app-conext";
 
 
 
-export interface HttpHandler2Interface{
+//employee
+//problem
+//room service
+//event
+//reservation
 
+
+export interface ProblemHandlerInterface{
+    getAllProblems()
+    getByProblemID()
+    markReviewed()
 }
 
-export class http2 implements HttpHandler2Interface{
+
+
+class  ProblemAPIHandler implements ProblemHandlerInterface{
     /////////////////////////////////////////////
     private useURL:string = "http://20.124.74.192:3000";
     private devMode:boolean = false;
@@ -29,9 +40,19 @@ export class http2 implements HttpHandler2Interface{
             case 1:{ return ''}
         }
     }
+    getAllProblems() {
+        throw new Error("Method not implemented.");
+    }
+    getByProblemID() {
+        throw new Error("Method not implemented.");
+    }
+    markReviewed() {
+        throw new Error("Method not implemented.");
+    }
 
 
-    
+
 }
 
-export const httpHandler2 = new http2();
+
+export const httpHandler1 = new ProblemAPIHandler(false, 1);

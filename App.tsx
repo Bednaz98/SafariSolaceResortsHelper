@@ -16,17 +16,18 @@ export default function App() {
   }
   const themeContextObject:ThemeContextInterface = {theme:theme,setTheme:setTheme}
 
-
-
-
   function SwitchPage(){
     switch(pageIndex){
-      case                        0:{return (<> <BasicText text={'Testing'}/> </>)}
-      case    /**/                1:{return (<> <BasicText text={'Testing'}/> </>)}
-      case    /**/                2:{return (<> <BasicText text={'Testing'}/> </>)}
-      case    /**/                3:{return (<> <BasicText text={'Testing'}/> </>)}
-      case    /**/                4:{return (<> <BasicText text={'Testing'}/> </>)}
-      case    /**/                5:{return (<> <BasicText text={'Testing'}/> </>)}
+
+      //================================================================================================
+      case    /*login*/                   0:{return (<> <BasicText text={'Testing'}/> </>)}
+      case    /*room service*/                1:{return (<> <BasicText text={'Testing'}/> </>)}
+      case    /*event*/                2:{return (<> <BasicText text={'Testing'}/> </>)}
+      case    /*check in*/                3:{return (<> <BasicText text={'Testing'}/> </>)}
+      case    /*status check*/                4:{return (<> <BasicText text={'Testing'}/> </>)}
+      case    /*problem*/                5:{return (<> <BasicText text={'Testing'}/> </>)}
+      //================================================================================================
+
       case    /*kris*/            6:{return (<> <BasicText text={'kris'}/>    </>)}
       case    /*john*/            7:{return (<> <BasicText text={'john'}/>    </>)}
       case    /*brandon*/         8:{return (<> <BasicText text={'brandon'}/> </>)}
@@ -34,6 +35,7 @@ export default function App() {
       default :                     {return (<> <BasicText text={'Testing'}/> </>)}
     }
   }
+
   return (
     <View style={styles.container}>
       <appContext.Provider value = {initContext}>

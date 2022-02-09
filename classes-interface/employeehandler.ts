@@ -3,12 +3,28 @@ import { appContext } from "./app-conext";
 
 
 
-export interface HttpHandler1Interface{
+//employee
+//problem
+//room service
+//event
+//reservation
+
+
+export interface EmployeeHandlerInterface{
+    /**gets all logs for manager*/
+    getWorklogs()
+    clockin()
+    clockout()
+
+    login()
+    logout()
+    
 
 }
 
 
-class http1 implements HttpHandler1Interface{
+
+class employeeAPIHandler implements EmployeeHandlerInterface{
     /////////////////////////////////////////////
     private useURL:string = "http://20.124.74.192:3000";
     private devMode:boolean = false;
@@ -31,9 +47,25 @@ class http1 implements HttpHandler1Interface{
         }
     }
 
-    
+    getWorklogs() {
+        throw new Error("Method not implemented.");
+    }
+    clockin() {
+        throw new Error("Method not implemented.");
+    }
+    clockout() {
+        throw new Error("Method not implemented.");
+    }
+    login() {
+        throw new Error("Method not implemented.");
+    }
+    logout() {
+        throw new Error("Method not implemented.");
+    }
+
+
 
 }
 
 
-export const httpHandler1 = new http1();
+export const httpHandler1 = new employeeAPIHandler(false, 1);
