@@ -21,13 +21,17 @@ export default function App() {
 
   function SwitchPage(){
     switch(pageIndex){
-      case                              0:{return (<BasicText text={''}/>)}
-      case /**/                1:{return (<><BasicText text={''}/></>)}
-      case /**/               2:{return (<><BasicText text={''}/></> )}
-      case /**/         3:{return (<><BasicText text={''}/></> ) }
-      case /*s*/               4:{return (<><BasicText text={''}/></> )}
-      case /**/           5:{return (<><BasicText text={''}/></>)} 
-      default :                           {return <><BasicText text={''}/></>}
+      case                        0:{return (<> <BasicText text={'Testing'}/> </>)}
+      case    /**/                1:{return (<> <BasicText text={'Testing'}/> </>)}
+      case    /**/                2:{return (<> <BasicText text={'Testing'}/> </>)}
+      case    /**/                3:{return (<> <BasicText text={'Testing'}/> </>)}
+      case    /**/                4:{return (<> <BasicText text={'Testing'}/> </>)}
+      case    /**/                5:{return (<> <BasicText text={'Testing'}/> </>)}
+      case    /*kris*/            6:{return (<> <BasicText text={'kris'}/>    </>)}
+      case    /*john*/            7:{return (<> <BasicText text={'john'}/>    </>)}
+      case    /*brandon*/         8:{return (<> <BasicText text={'brandon'}/> </>)}
+      case    /*josh*/            9:{return (<> <BasicText text={'josh'}/>    </>)} 
+      default :                     {return (<> <BasicText text={'Testing'}/> </>)}
     }
   }
   return (
@@ -44,7 +48,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#444',
     alignItems: 'center',
     justifyContent: 'center',
   },
