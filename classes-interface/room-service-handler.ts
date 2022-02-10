@@ -1,23 +1,22 @@
+import axios from "axios";
 import { useContext } from "react";
+import { ServiceRequest } from "./api-entities";
 import { appContext } from "./app-conext";
 
 
-
-//employee
-//problem
-//room service
-//event
-//reservation
-
+enum type {
+   Ordered = "Ordered",
+   Processing = "Processing",
+   Completed =  "Completed",
+   Cancelled = "Cancelled"
+}
 
 export interface RoomServiceHandlerInterface{
     /**sorting by type! All, completed, processing, ordered, canceled*/
-    getAllRequest(type)
-    markAsProcessed()
-    markAsCompleted()
+    getAllRequest(type:type): Promise<ServiceRequest>
+    markAsProcessed(id:string): Promise<ServiceRequest>
+    markAsCompleted(id:string) : Promise<ServiceRequest>
 }
-
-
 
 class   RoomServiceHandlerAPIHandler implements RoomServiceHandlerInterface{
     /////////////////////////////////////////////
@@ -42,17 +41,25 @@ class   RoomServiceHandlerAPIHandler implements RoomServiceHandlerInterface{
         }
     }
     
-    getAllRequest(type: any) {
-        throw new Error("Method not implemented.");
+    async getAllRequest(type: string) {
+        const response = await axios.get(this.getURL()+"/service-requests");
+        const data:ServiceRequest = response.data;
+        return data;
     }
-    markAsProcessed() {
-        throw new Error("Method not implemented.");
+    async markAsProcessed(id:string) {
+        const response = await axios.put(this.getURL()+"/service-requests/"+id, {
+            status: "Processing"
+        });
+        const data:ServiceRequest = response.data;
+        return data;
     }
-    markAsCompleted() {
-        throw new Error("Method not implemented.");
+    async markAsCompleted(id:string) {
+        const response = await axios.put(this.getURL()+"/service-requests/"+id, {
+            status: "Completed"
+        });
+        const data:ServiceRequest = response.data;
+        return data;
     }
-
-
 
 }
 
