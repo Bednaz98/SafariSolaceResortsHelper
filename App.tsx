@@ -10,7 +10,7 @@ import { themeContext, ThemeContextInterface } from './SafariSolaceStyleTools/th
 export default function App() {
 
   const [theme, setTheme] = useState(Theme.default);
-  const [pageIndex, setPageIndex] = useState(1);
+  const [pageIndex, setPageIndex] = useState(7);
 
   const initContext:AppContextInterface = {
 
@@ -29,7 +29,7 @@ export default function App() {
       case    /*problem*/         5:{return (<> <BasicText text={'Testing'}/> </>)}
       //================================================================================================
       case    /*kris*/            6:{return (<> <BasicText text={'kris'}/>    </>)}
-      case    /*john*/            7:{return (<> <BasicText text={'john'}/>    </>)}
+      case    /*john*/            7:{return (<> <RoomService/> </>)}
       case    /*brandon*/         8:{return (<> <BasicText text={'brandon'}/> </>)}
       case    /*josh*/            9:{return (<> <BasicText text={'josh'}/>    </>)} 
       default                      :{return (<> <BasicText text={'Testing'}/> </>)}
