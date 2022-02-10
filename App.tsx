@@ -21,19 +21,18 @@ export default function App() {
     switch(pageIndex){
 
       //================================================================================================
-      case    /*login*/                   0:{return (<> <LoginPage/> </>)}
-      case    /*room service*/                1:{return (<> <RoomService/> </>)}
-      case    /*event*/                2:{return (<> <BasicText text={'Testing'}/> </>)}
-      case    /*check in*/                3:{return (<> <BasicText text={'Testing'}/> </>)}
-      case    /*status check*/                4:{return (<> <BasicText text={'Testing'}/> </>)}
-      case    /*problem*/                5:{return (<> <BasicText text={'Testing'}/> </>)}
+      case    /*login*/           0:{return (<> <LoginPage/> </>)}
+      case    /*room service*/    1:{return (<> <RoomService/> </>)}
+      case    /*event*/           2:{return (<> <BasicText text={'Testing'}/> </>)}
+      case    /*check in*/        3:{return (<> <BasicText text={'Testing'}/> </>)}
+      case    /*status check*/    4:{return (<> <BasicText text={'Testing'}/> </>)}
+      case    /*problem*/         5:{return (<> <BasicText text={'Testing'}/> </>)}
       //================================================================================================
-
       case    /*kris*/            6:{return (<> <BasicText text={'kris'}/>    </>)}
       case    /*john*/            7:{return (<> <BasicText text={'john'}/>    </>)}
       case    /*brandon*/         8:{return (<> <BasicText text={'brandon'}/> </>)}
       case    /*josh*/            9:{return (<> <BasicText text={'josh'}/>    </>)} 
-      default :                     {return (<> <BasicText text={'Testing'}/> </>)}
+      default                      :{return (<> <BasicText text={'Testing'}/> </>)}
     }
   }
 
