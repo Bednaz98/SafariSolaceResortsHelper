@@ -4,21 +4,22 @@ import { ServiceRequest } from "./api-entities";
 import { appContext } from "./app-conext";
 
 
-enum type {
-   Ordered = "Ordered",
-   Processing = "Processing",
-   Completed =  "Completed",
-   Cancelled = "Cancelled"
+enum sortType {
+   Ordered ,
+   Processing,
+   Completed ,
+   Cancelled,
+   All
 }
 
 export interface RoomServiceHandlerInterface{
     /**sorting by type! All, completed, processing, ordered, canceled*/
-    getAllRequest(type:type): Promise<ServiceRequest>
+    getAllRequest(type:sortType): Promise<ServiceRequest[]>
     markAsProcessed(id:string): Promise<ServiceRequest>
     markAsCompleted(id:string) : Promise<ServiceRequest>
 }
 
-class   RoomServiceHandlerAPIHandler implements RoomServiceHandlerInterface{
+export default class RoomServiceHandlerAPIHandler implements RoomServiceHandlerInterface{
     /////////////////////////////////////////////
     private useURL:string = "http://20.124.74.192:3000";
     private devMode:boolean = false;
@@ -41,11 +42,22 @@ class   RoomServiceHandlerAPIHandler implements RoomServiceHandlerInterface{
         }
     }
     
-    async getAllRequest(type: string) {
+    async getAllRequest(type: sortType) {
         const response = await axios.get(this.getURL()+"/service-requests");
-        const data:ServiceRequest = response.data;
+        const data:ServiceRequest[] = response.data;
+        if(type == sortType.All){
         return data;
+        }else{
+            let newData:ServiceRequest[] = [];
+            for(let i=0; i<data.length; i++){
+                if(data[i].status == sortType[type]){
+                    newData.push(data[i]);
+                }
+            }
+            return newData;
+        }
     }
+
     async markAsProcessed(id:string) {
         const response = await axios.put(this.getURL()+"/service-requests/"+id, {
             status: "Processing"

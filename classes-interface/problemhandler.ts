@@ -11,7 +11,7 @@ export interface ProblemHandlerInterface{
     markReviewed(id:string, status:string) : Promise<Problem>
 }
 
-class  ProblemAPIHandler implements ProblemHandlerInterface{
+export default class ProblemAPIHandler implements ProblemHandlerInterface{
     /////////////////////////////////////////////
     private useURL:string = "http://20.124.74.192:3000";
     private devMode:boolean = false;

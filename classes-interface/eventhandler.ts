@@ -20,7 +20,7 @@ export interface EventHandlerInterface{
 
 
 
-class EventAPIHandler implements EventHandlerInterface{
+export default class EventAPIHandler implements EventHandlerInterface{
     /////////////////////////////////////////////
     private useURL:string = "http://20.124.74.192:3000";
     private devMode:boolean = false;

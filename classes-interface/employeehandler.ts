@@ -11,14 +11,14 @@ export interface EmployeeHandlerInterface{
     
     clockout(wId:number , type: string): Promise<WorkLog>
     
-/*     login(username:string, password:string): Promise<Employee>
+    login(username:string, password:string): Promise<Employee>
     
-    logout() */
+    /* logout()  */
 
 }
 
 
-class employeeAPIHandler implements EmployeeHandlerInterface{
+export default class employeeAPIHandler implements EmployeeHandlerInterface{
     /////////////////////////////////////////////
     private useURL:string = "http://20.124.74.192:3000";
     private devMode:boolean = false;
@@ -65,15 +65,22 @@ class employeeAPIHandler implements EmployeeHandlerInterface{
         return data;    
     }
 
-/*     async login(username:string, password:string) {
-
-        
-    }
-
-    logout() {
+    async login(username:string, password:string) {
+        try {
+            const response = await axios.patch(this.getURL()+"/login",{
+                username:username,
+                password:password
+            });
+            const data:Employee = response.data;
+            return data;
+        } catch (error) {
+            console.log("Login failed");
+        }
+}
+/*     logout() {
         throw new Error("Method not implemented.");
-    } */
-
+    } 
+ */
 
 
 }
