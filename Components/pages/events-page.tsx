@@ -1,13 +1,14 @@
 import { useState } from "react"
 import { FlatList, ScrollView, View, Text } from "react-native"
 import { Event } from "../../classes-interface/api-entities"
-import { EventAPIHandler, EventHandlerInterface } from "../../classes-interface/eventhandler"
+import EventAPIHandler, { EventHandlerInterface } from "../../classes-interface/eventhandler"
+import BasicButton from "../../SafariSolaceStyleTools/basicbutton"
 import CreateEventOption from "../children/create-event-option"
 import FormatSingleEvent from "../children/format-single-event"
+import GetEventByID from "../children/get-event-by-ID"
 
 export default function EventsPage(){
     const eventhandle: EventHandlerInterface = new EventAPIHandler(true)
-
     const dummyEvents: Event[] = [{
             id: 'dummyevent1',
             title: 'title',
@@ -28,10 +29,10 @@ export default function EventsPage(){
         }
     ]
     const [allEvents, setAllEvents] = useState(dummyEvents)
-
+    const [filteredEventID, setFilteredEventID] = useState<string>("")
     //map all events into a scroll list
     function FormattedEventsList(){
-        const formattedEvents = allEvents.map((event, index) => {return <FormatSingleEvent event={event} index={index}/>})        
+        const formattedEvents = allEvents.map((event, index) => {return <FormatSingleEvent event={event} index={index} allEvents={allEvents} setAllEvents={setAllEvents} filter={filteredEventID}/>})        
         return(
             <View>
                 <ScrollView>
@@ -40,16 +41,11 @@ export default function EventsPage(){
             </View>
         )
     }
-
     return(
         <>
+            <GetEventByID setFilteredEventID={setFilteredEventID}/>
             <CreateEventOption allEvents={allEvents} setAllEvents={setAllEvents}/>
             <FormattedEventsList/>
         </>
     )
 }
-
-// getAllEvents()
-        // cancelEvent()
-        // createEvent()
-        // getEventByID()
