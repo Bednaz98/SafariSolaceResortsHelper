@@ -8,7 +8,7 @@ export interface ReservationHandlerInterface{
     getReservationByID(id:string):Promise <Reservation>
 }
 
-class   ReservationAPIHandler implements  ReservationHandlerInterface{
+export default class ReservationAPIHandler implements  ReservationHandlerInterface{
     /////////////////////////////////////////////
     private useURL:string = "http://20.124.74.192:3000";
     private devMode:boolean = false;
