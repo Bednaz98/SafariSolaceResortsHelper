@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { appContext, AppContextInterface } from './classes-interface/app-conext';
+import ClockingScreen from './Components/pages/clocking';
 import LoginPage from './Components/pages/login';
 import RoomService from './Components/pages/room-service';
 import BasicText from './SafariSolaceStyleTools/basictext';
@@ -10,7 +11,7 @@ import { themeContext, ThemeContextInterface } from './SafariSolaceStyleTools/th
 export default function App() {
 
   const [theme, setTheme] = useState(Theme.default);
-  const [pageIndex, setPageIndex] = useState(7);
+  const [pageIndex, setPageIndex] = useState(3);
 
   const initContext:AppContextInterface = {
 
@@ -24,7 +25,7 @@ export default function App() {
       case    /*login*/           0:{return (<> <LoginPage/> </>)}
       case    /*room service*/    1:{return (<> <RoomService/> </>)}
       case    /*event*/           2:{return (<> <BasicText text={'Testing'}/> </>)}
-      case    /*check in*/        3:{return (<> <BasicText text={'Testing'}/> </>)}
+      case    /*check in*/        3:{return (<> <ClockingScreen/></>)}
       case    /*status check*/    4:{return (<> <BasicText text={'Testing'}/> </>)}
       case    /*problem*/         5:{return (<> <BasicText text={'Testing'}/> </>)}
       //================================================================================================
