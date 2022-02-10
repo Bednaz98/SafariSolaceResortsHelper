@@ -1,30 +1,26 @@
-
-
+import axios from "axios";
 import { useContext } from "react";
+import { Event } from "./api-entities";
 import { appContext } from "./app-conext";
 
 
 
-//employee
-//problem
-//room service
-//event
-//reservation
-
-
 export interface EventHandlerInterface{
-    getAllEvents()
+    getAllEvents(): Promise<Event>
     /**put -> cancel*/
-    cancelEvent()
+    cancelEvent(id:string): Promise<Event>
+    /**put -> update*/
+    updateEvent(id:string, event:Event): Promise<Event>
     /**post -> create*/
-    createEvent()
-    getEventByID()
+    createEvent(event:Event): Promise<Event>
+
+    getEventByID(id: string): Promise<Event>
 
 }
 
 
 
-class   EventAPIHandler implements EventHandlerInterface{
+class EventAPIHandler implements EventHandlerInterface{
     /////////////////////////////////////////////
     private useURL:string = "http://20.124.74.192:3000";
     private devMode:boolean = false;
@@ -35,6 +31,7 @@ class   EventAPIHandler implements EventHandlerInterface{
         this.devMode=dev;
         this.IndexURL=IndexURL
     }
+
     //////////////////////////////////////////////
 
     /**this function returns the URL to work with, if devMod is set to false, 
@@ -47,21 +44,44 @@ class   EventAPIHandler implements EventHandlerInterface{
         }
     }
 
-    getAllEvents() {
-        throw new Error("Method not implemented.");
+    async getAllEvents() {
+        const response = await axios.get(this.getURL()+"/events");
+        const data:Event = response.data;
+        return data;    
     }
-    cancelEvent() {
-        throw new Error("Method not implemented.");
-    }
-    createEvent() {
-        throw new Error("Method not implemented.");
-    }
-    getEventByID() {
-        throw new Error("Method not implemented.");
+    
+    async cancelEvent(id:string) {
+        const response = await axios.put(this.getURL()+"/events",
+        {
+            id:id,
+            status:"Cancelled"
+        });
+        const data:Event = response.data;
+        return data;
+        }
+        
+    async createEvent(event:Event) {
+        const response = await axios.post(this.getURL()+"/events",event);
+        const data:Event = response.data;
+        return data;
     }
 
+    async getEventByID(id: string) {
+        const response = await axios.get(this.getURL()+"/events/"+id);
+        const data:Event = response.data;
+        return data;
+    }
 
-
+    async updateEvent(id:string, event:Event) {
+        const response = await axios.put(this.getURL()+"/events",
+        {
+            id:id,
+            ...event
+        });
+        const data:Event = response.data;
+        return data;
+    }
+        
 }
 
 

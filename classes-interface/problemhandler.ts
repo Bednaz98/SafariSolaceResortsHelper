@@ -1,22 +1,15 @@
+import axios from "axios";
 import { useContext } from "react";
+import { Problem } from "./api-entities";
 import { appContext } from "./app-conext";
 
-
-
-//employee
-//problem
-//room service
-//event
-//reservation
-
-
 export interface ProblemHandlerInterface{
-    getAllProblems()
-    getByProblemID()
-    markReviewed()
+    getAllProblems():Promise <Problem>
+
+    getByProblemID(id:string) : Promise<Problem>
+
+    markReviewed(id:string, status:string) : Promise<Problem>
 }
-
-
 
 class  ProblemAPIHandler implements ProblemHandlerInterface{
     /////////////////////////////////////////////
@@ -40,14 +33,26 @@ class  ProblemAPIHandler implements ProblemHandlerInterface{
             case 1:{ return ''}
         }
     }
-    getAllProblems() {
-        throw new Error("Method not implemented.");
+    async getAllProblems() {
+        const response = await axios.get(this.getURL()+"/problems");
+        const data:Problem = response.data;
+        return data;    
     }
-    getByProblemID() {
-        throw new Error("Method not implemented.");
+
+    async getByProblemID(id:string) {
+        const response = await axios.get(this.getURL()+"/problems/"+id);
+        const data:Problem = response.data;
+        return data;    
     }
-    markReviewed() {
-        throw new Error("Method not implemented.");
+
+    async markReviewed(id:string, status:string) {
+        const response = await axios.put(this.getURL()+"/problems/"+id,
+        {
+            id:id,
+            status:status
+        });
+        const data:Problem = response.data;
+        return data;
     }
 
 
