@@ -1,26 +1,14 @@
-
-
-
+import axios from "axios";
 import { useContext } from "react";
+import { Reservation } from "./api-entities";
 import { appContext } from "./app-conext";
 
-
-
-//employee
-//problem
-//room service
-//event
-//reservation
-
-
 export interface ReservationHandlerInterface{
-    getAllReservations()
-    getReservationByID()
+    getAllReservations():Promise <Reservation>
+    getReservationByID(id:string):Promise <Reservation>
 }
 
-
-
-class   ReservationAPIHandler implements  ReservationHandlerInterface{
+export default class ReservationAPIHandler implements  ReservationHandlerInterface{
     /////////////////////////////////////////////
     private useURL:string = "http://20.124.74.192:3000";
     private devMode:boolean = false;
@@ -43,11 +31,15 @@ class   ReservationAPIHandler implements  ReservationHandlerInterface{
         }
     }
 
-    getAllReservations() {
-        throw new Error("Method not implemented.");
+    async getAllReservations() {
+        const response = await axios.get(this.getURL()+"/reservations");
+        const data:Reservation = response.data;
+        return data;    
     }
-    getReservationByID() {
-        throw new Error("Method not implemented.");
+    async getReservationByID(id:string) {
+        const response = await axios.get(this.getURL()+"/reservations/"+id);
+        const data:Reservation = response.data;
+        return data;    
     }
 
 

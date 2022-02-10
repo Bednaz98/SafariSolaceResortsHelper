@@ -1,30 +1,24 @@
+import axios from "axios";
 import { useContext } from "react";
+import { Employee, WorkLog } from "./api-entities";
 import { appContext } from "./app-conext";
-
-
-
-//employee
-//problem
-//room service
-//event
-//reservation
-
 
 export interface EmployeeHandlerInterface{
     /**gets all logs for manager*/
-    getWorklogs()
-    clockin()
-    clockout()
+    getWorklogs(): Promise<WorkLog>
 
-    login()
-    logout()
+    clockin(wId:number , type: string ): Promise<WorkLog>
     
+    clockout(wId:number , type: string): Promise<WorkLog>
+    
+    login(username:string, password:string): Promise<Employee>
+    
+    /* logout()  */
 
 }
 
 
-
-class employeeAPIHandler implements EmployeeHandlerInterface{
+export default class employeeAPIHandler implements EmployeeHandlerInterface{
     /////////////////////////////////////////////
     private useURL:string = "http://20.124.74.192:3000";
     private devMode:boolean = false;
@@ -47,22 +41,46 @@ class employeeAPIHandler implements EmployeeHandlerInterface{
         }
     }
 
-    getWorklogs() {
-        throw new Error("Method not implemented.");
+    async getWorklogs() {
+        const response = await axios.get(this.getURL()+"/worklogs");
+        const data:WorkLog = response.data;
+        return data;    
     }
-    clockin() {
-        throw new Error("Method not implemented.");
-    }
-    clockout() {
-        throw new Error("Method not implemented.");
-    }
-    login() {
-        throw new Error("Method not implemented.");
-    }
-    logout() {
-        throw new Error("Method not implemented.");
+    
+    async clockin(wId:number , type: string) {
+        const response = await axios.post(this.getURL()+"/worklogs",{
+            wId:wId,
+            type:type
+        });
+        const data:WorkLog = response.data;
+        return data;    
     }
 
+    async clockout(wId:number , type: string) {
+        const response = await axios.post(this.getURL()+"/worklogs",{
+            wId:wId,
+            type:type
+        });
+        const data:WorkLog = response.data;
+        return data;    
+    }
+
+    async login(username:string, password:string) {
+        try {
+            const response = await axios.patch(this.getURL()+"/login",{
+                username:username,
+                password:password
+            });
+            const data:Employee = response.data;
+            return data;
+        } catch (error) {
+            console.log("Login failed");
+        }
+}
+/*     logout() {
+        throw new Error("Method not implemented.");
+    } 
+ */
 
 
 }

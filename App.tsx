@@ -1,8 +1,10 @@
-import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { Employee } from './classes-interface/api-entities';
 import { appContext, AppContextInterface } from './classes-interface/app-conext';
-import EventsPage from './Components/pages/events-page';
+import ClockingScreen from './Components/pages/clocking';
+import LoginPage from './Components/pages/login';
+import RoomService from './Components/pages/room-service';
 import BasicText from './SafariSolaceStyleTools/basictext';
 import { Theme } from './SafariSolaceStyleTools/colorstyle';
 import { themeContext, ThemeContextInterface } from './SafariSolaceStyleTools/themecontext';
@@ -10,10 +12,16 @@ import { themeContext, ThemeContextInterface } from './SafariSolaceStyleTools/th
 export default function App() {
 
   const [theme, setTheme] = useState(Theme.default);
-  const [pageIndex, setPageIndex] = useState(6);
+  const [pageIndex, setPageIndex] = useState(3);
+  const [clockStatus, setClockStatus] = useState(false)
+  const dummyEmployee:Employee = {id: 0,isManager: false,fname: '',lname: '',username: '',password: ''}
+  const [user, setUser] = useState(dummyEmployee)
 
   const initContext:AppContextInterface = {
-
+    clockStatus,
+    setClockStatus,
+    user,
+    setUser,
   }
   const themeContextObject:ThemeContextInterface = {theme:theme,setTheme:setTheme}
 
@@ -21,19 +29,18 @@ export default function App() {
     switch(pageIndex){
 
       //================================================================================================
-      case    /*login*/                   0:{return (<> <BasicText text={'Testing'}/> </>)}
-      case    /*room service*/                1:{return (<> <BasicText text={'Testing'}/> </>)}
-      case    /*event*/                2:{return (<> <BasicText text={'Testing'}/> </>)}
-      case    /*check in*/                3:{return (<> <BasicText text={'Testing'}/> </>)}
-      case    /*status check*/                4:{return (<> <BasicText text={'Testing'}/> </>)}
-      case    /*problem*/                5:{return (<> <BasicText text={'Testing'}/> </>)}
+      case    /*login*/           0:{return (<> <LoginPage/> </>)}
+      case    /*room service*/    1:{return (<> <RoomService/> </>)}
+      case    /*event*/           2:{return (<> <BasicText text={'Testing'}/> </>)}
+      case    /*check in*/        3:{return (<> <ClockingScreen/></>)}
+      case    /*status check*/    4:{return (<> <BasicText text={'Testing'}/> </>)}
+      case    /*problem*/         5:{return (<> <BasicText text={'Testing'}/> </>)}
       //================================================================================================
-
-      case    /*kris*/            6:{return (<> <EventsPage/>    </>)}
-      case    /*john*/            7:{return (<> <BasicText text={'john'}/>    </>)}
+      case    /*kris*/            6:{return (<> <BasicText text={'kris'}/>    </>)}
+      case    /*john*/            7:{return (<> <RoomService/> </>)}
       case    /*brandon*/         8:{return (<> <BasicText text={'brandon'}/> </>)}
       case    /*josh*/            9:{return (<> <BasicText text={'josh'}/>    </>)} 
-      default :                     {return (<> <BasicText text={'Testing'}/> </>)}
+      default                      :{return (<> <BasicText text={'Testing'}/> </>)}
     }
   }
 
