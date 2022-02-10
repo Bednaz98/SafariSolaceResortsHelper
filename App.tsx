@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { appContext, AppContextInterface } from './classes-interface/app-conext';
+import EventsPage from './Components/pages/events-page';
 import BasicText from './SafariSolaceStyleTools/basictext';
 import { Theme } from './SafariSolaceStyleTools/colorstyle';
 import { themeContext, ThemeContextInterface } from './SafariSolaceStyleTools/themecontext';
@@ -9,7 +10,7 @@ import { themeContext, ThemeContextInterface } from './SafariSolaceStyleTools/th
 export default function App() {
 
   const [theme, setTheme] = useState(Theme.default);
-  const [pageIndex, setPageIndex] = useState(0);
+  const [pageIndex, setPageIndex] = useState(6);
 
   const initContext:AppContextInterface = {
 
@@ -28,7 +29,7 @@ export default function App() {
       case    /*problem*/                5:{return (<> <BasicText text={'Testing'}/> </>)}
       //================================================================================================
 
-      case    /*kris*/            6:{return (<> <BasicText text={'kris'}/>    </>)}
+      case    /*kris*/            6:{return (<> <EventsPage/>    </>)}
       case    /*john*/            7:{return (<> <BasicText text={'john'}/>    </>)}
       case    /*brandon*/         8:{return (<> <BasicText text={'brandon'}/> </>)}
       case    /*josh*/            9:{return (<> <BasicText text={'josh'}/>    </>)} 
