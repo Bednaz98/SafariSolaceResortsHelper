@@ -1,7 +1,8 @@
-import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { appContext, AppContextInterface } from './classes-interface/app-conext';
+import LoginPage from './Components/pages/login';
+import RoomService from './Components/pages/room-service';
 import BasicText from './SafariSolaceStyleTools/basictext';
 import { Theme } from './SafariSolaceStyleTools/colorstyle';
 import { themeContext, ThemeContextInterface } from './SafariSolaceStyleTools/themecontext';
@@ -9,7 +10,7 @@ import { themeContext, ThemeContextInterface } from './SafariSolaceStyleTools/th
 export default function App() {
 
   const [theme, setTheme] = useState(Theme.default);
-  const [pageIndex, setPageIndex] = useState(0);
+  const [pageIndex, setPageIndex] = useState(1);
 
   const initContext:AppContextInterface = {
 
@@ -20,8 +21,8 @@ export default function App() {
     switch(pageIndex){
 
       //================================================================================================
-      case    /*login*/                   0:{return (<> <BasicText text={'Testing'}/> </>)}
-      case    /*room service*/                1:{return (<> <BasicText text={'Testing'}/> </>)}
+      case    /*login*/                   0:{return (<> <LoginPage/> </>)}
+      case    /*room service*/                1:{return (<> <RoomService/> </>)}
       case    /*event*/                2:{return (<> <BasicText text={'Testing'}/> </>)}
       case    /*check in*/                3:{return (<> <BasicText text={'Testing'}/> </>)}
       case    /*status check*/                4:{return (<> <BasicText text={'Testing'}/> </>)}
