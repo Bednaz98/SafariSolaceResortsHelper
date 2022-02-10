@@ -11,9 +11,9 @@ export default function RoomService(){
     const dummyArray:any[] = []
     const [data, setData] = useState(dummyArray);
 
-    useEffect(() => {
-        Testing
-      return () => {}}, [])
+   useEffect(()=>{
+        Testing(); 
+   },[])
 
       function Testing(){
         let testStack:any[] =[]
