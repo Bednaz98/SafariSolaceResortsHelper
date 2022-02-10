@@ -7,6 +7,7 @@ import BasicText from "../../SafariSolaceStyleTools/basictext";
 
 
 export default function ClockingScreen(){
+
     const [clockCheck, setClockCheck] = useState(false)
 
     function changeClockText(){

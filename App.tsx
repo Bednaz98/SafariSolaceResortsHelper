@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { Employee } from './classes-interface/api-entities';
 import { appContext, AppContextInterface } from './classes-interface/app-conext';
 import ClockingScreen from './Components/pages/clocking';
 import LoginPage from './Components/pages/login';
@@ -12,9 +13,15 @@ export default function App() {
 
   const [theme, setTheme] = useState(Theme.default);
   const [pageIndex, setPageIndex] = useState(3);
+  const [clockStatus, setClockStatus] = useState(false)
+  const dummyEmployee:Employee = {id: 0,isManager: false,fname: '',lname: '',username: '',password: ''}
+  const [user, setUser] = useState(dummyEmployee)
 
   const initContext:AppContextInterface = {
-
+    clockStatus,
+    setClockStatus,
+    user,
+    setUser,
   }
   const themeContextObject:ThemeContextInterface = {theme:theme,setTheme:setTheme}
 
