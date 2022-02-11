@@ -42,7 +42,7 @@ export default class RoomServiceHandlerAPIHandler implements RoomServiceHandlerI
     }
     
     async getAllRequest(type: sortType) {
-        const response = await axios.get(this.getURL()+"/service-requests");
+        const response = await axios.get(this.getURL()+"/servicerequests");
         const data:ServiceRequest[] = response.data;
         if(type == sortType.All){
         return data;
@@ -58,14 +58,14 @@ export default class RoomServiceHandlerAPIHandler implements RoomServiceHandlerI
     }
 
     async markAsProcessed(id:string) {
-        const response = await axios.put(this.getURL()+"/service-requests/"+id, {
+        const response = await axios.put(this.getURL()+"/servicerequests/"+id, {
             status: "Processing"
         });
         const data:ServiceRequest = response.data;
         return data;
     }
     async markAsCompleted(id:string) {
-        const response = await axios.put(this.getURL()+"/service-requests/"+id, {
+        const response = await axios.put(this.getURL()+"/servicerequests/"+id, {
             status: "Completed"
         });
         const data:ServiceRequest = response.data;
