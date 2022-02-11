@@ -16,6 +16,6 @@ export default function BasicInputText(props){
     return(
     <View style={{backgroundColor:GetColor(Color.InputText), padding:3}}> 
         <TextInput value={value} onChangeText={onChangeText} placeholder={placeholder} 
-        keyboardType='default' editable={editable} onChange={onChange} onContentSizeChange={onContentSizeChange}/>
+    keyboardType={keyboardType} editable={editable} onChange={onChange} onContentSizeChange={onContentSizeChange}/>
     </View>)
 }

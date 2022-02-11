@@ -4,7 +4,7 @@ import { Problem } from "./api-entities";
 import { appContext } from "./app-conext";
 
 export interface ProblemHandlerInterface{
-    getAllProblems():Promise <Problem>
+    getAllProblems():Promise <Problem[]>
 
     getByProblemID(id:string) : Promise<Problem>
 
@@ -35,7 +35,7 @@ export default class ProblemAPIHandler implements ProblemHandlerInterface{
     }
     async getAllProblems() {
         const response = await axios.get(this.getURL()+"/problems");
-        const data:Problem = response.data;
+        const data:Problem[] = response.data;
         return data;    
     }
 
@@ -60,4 +60,4 @@ export default class ProblemAPIHandler implements ProblemHandlerInterface{
 }
 
 
-export const httpHandler1 = new ProblemAPIHandler(false, 1);
+//export const httpHandler1 = new ProblemAPIHandler(false, 1);
