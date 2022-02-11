@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View } from "react-native";
+import employeeAPIHandler from "../../classes-interface/employeehandler";
 import BasicButton from "../../SafariSolaceStyleTools/basicbutton";
 import BasicText from "../../SafariSolaceStyleTools/basictext";
 
@@ -9,6 +10,7 @@ import BasicText from "../../SafariSolaceStyleTools/basictext";
 export default function ClockingScreen(){
 
     const [clockCheck, setClockCheck] = useState(false)
+    const handler = new employeeAPIHandler()
 
     function changeClockText(){
         if(clockCheck){return "Clock Out"}
