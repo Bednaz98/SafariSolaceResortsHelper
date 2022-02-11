@@ -27,6 +27,7 @@ export default function RoomService(){
     setSort(type)
     try {
         const foundRequest = await handler.getAllRequest(type);
+        if(!foundRequest) setData([])
         if(foundRequest?.length >0) setData(foundRequest)
         else setData([])
     } catch (error) {
