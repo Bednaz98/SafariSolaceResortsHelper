@@ -15,8 +15,8 @@ export default function RoomService(){
     const dummyArray:ServiceRequest[] = []
     const [data, setData] = useState(dummyArray);
     const [sort, setSort] = useState(sortType.All)
-    const [FirstRefresh, setFirstRefresh] = useState(false)
     const handler = new RoomServiceHandlerAPIHandler(true)
+    
 
     useEffect(() => {
         grabServiceRequest(sortType.All)
@@ -28,17 +28,18 @@ export default function RoomService(){
     
 
 
-   async function grabServiceRequest(type:sortType){
     
+
+
+    async function grabServiceRequest(type:sortType){
     try {
-        const foundRequest = await handler.getAllRequest(type);
-        if(!foundRequest) {setData([]);setSort(type)}
-        if(foundRequest?.length >0) {setData(foundRequest);setSort(type)}
-        else {setData([]);setSort(type)}
-    } catch (error) {
-        console.log('Failed to sort request')
+            const foundRequest = await handler.getAllRequest(type);
+            console.log(foundRequest)
+            if(foundRequest) {setData([]);setData(foundRequest);setSort(type)}
+        } catch (error) {
+            console.log('Failed to sort request')
+        }
     }
-   }
 
    function DisplaySortType(){
        return <BasicText text={`Filtering Type: ${sortType[sort]}`}/>
@@ -46,11 +47,11 @@ export default function RoomService(){
 
    function FilterButtons(){
     return <View style={{flexDirection:"row"}}>
-        <BasicButton title={'All'} onPress={()=>grabServiceRequest(sortType.All)} />
-        <BasicButton title={'Ordered'} onPress={()=>grabServiceRequest(sortType.Ordered)} />
-        <BasicButton title={'Processing'} onPress={()=>grabServiceRequest(sortType.Processing)} />
-        <BasicButton title={'Complete'} onPress={()=>grabServiceRequest(sortType.Completed)} />
-        <BasicButton title={'Cancelled'} onPress={()=>grabServiceRequest(sortType.Cancelled)} />
+        <BasicButton title={'All'} onPress={()=> grabServiceRequest(sortType.All)} />
+        <BasicButton title={'Ordered'} onPress={()=> grabServiceRequest(sortType.Ordered)} />
+        <BasicButton title={'Processing'} onPress={()=> grabServiceRequest(sortType.Processing)} />
+        <BasicButton title={'Complete'} onPress={()=> grabServiceRequest(sortType.Completed)} />
+        <BasicButton title={'Cancelled'} onPress={()=> grabServiceRequest(sortType.Cancelled)} />
     </View>
    }
 
@@ -86,13 +87,17 @@ export default function RoomService(){
         }
         else return <BasicText text={`No request found for ${sortType[sort]}`}/>
     }
+    //grabServiceRequest(sort)
 
     return(
     <View>
         <BasicText text={"Room Service Request"}/>
         <DisplaySortType/>
         <FilterButtons />
-        <BasicButton title={'Refresh'} onPress={()=>grabServiceRequest(sort)} />
+        <BasicButton title={'Refresh'} onPress={()=>{grabServiceRequest(sort)}} />
         <DisplaySwitch />
+        
+
+
     </View>)
 }
