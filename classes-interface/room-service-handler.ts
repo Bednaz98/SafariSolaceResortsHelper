@@ -41,7 +41,6 @@ export default class RoomServiceHandlerAPIHandler implements RoomServiceHandlerI
     
     async getAllRequest(type: sortType) {
         const response = await axios.get(this.getURL()+"/servicerequests");
-        if()
         const data:ServiceRequest[] = response.data;
         if(type == sortType.All){
             return data;
