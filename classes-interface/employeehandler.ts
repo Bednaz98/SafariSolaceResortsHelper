@@ -46,9 +46,10 @@ export default class employeeAPIHandler implements EmployeeHandlerInterface{
     }
 
     async getWorklogByID(id:number) {
-        const response = await axios.get(this.getURL()+"/worklogs/"+id);
-        const data:WorkLog = response.data;
-        return data;    
+        const response = await axios.get(this.getURL()+"/worklogs");
+        const filter = response.data.filter(w => w.id === id);
+        const data:WorkLog = filter[0];
+        return data;
     }
     
     async clockin(wId:number , type: string) {
@@ -83,5 +84,3 @@ export default class employeeAPIHandler implements EmployeeHandlerInterface{
 }
 
 }
-
-
