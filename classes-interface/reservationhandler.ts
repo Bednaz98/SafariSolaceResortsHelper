@@ -13,7 +13,6 @@ export default class ReservationAPIHandler implements  ReservationHandlerInterfa
     private useURL:string = "http://20.124.74.192:3000";
     private devMode:boolean = false;
     private IndexURL =0;
-    private context = useContext(appContext);
     //constructor
     constructor(dev:boolean = false, IndexURL=1){
         this.devMode=dev;
@@ -46,5 +45,3 @@ export default class ReservationAPIHandler implements  ReservationHandlerInterfa
 
 }
 
-
-export const httpHandler1 = new  ReservationAPIHandler(false, 1);

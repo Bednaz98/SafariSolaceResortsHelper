@@ -4,6 +4,8 @@ import { v4 } from "uuid";
 import BasicText from "../../SafariSolaceStyleTools/basictext";
 import RoomServiceRequest from "../children/room-service-request";
 import {Offering, ServiceRequest} from '../../classes-interface/api-entities';
+import RoomServiceHandlerAPIHandler, { sortType } from "../../classes-interface/room-service-handler";
+
 
 
 
@@ -11,10 +13,19 @@ export default function RoomService(){
 
     const dummyArray:ServiceRequest[] = []
     const [data, setData] = useState(dummyArray);
+    const [sort, setSort] = useState(sortType.All)
+    const handler = new RoomServiceHandlerAPIHandler()
 
    useEffect(()=>{
-        Testing(); 
+        //Testing(); 
+        grabServiceRequest(sort)
    },[])
+
+
+   function grabServiceRequest(type:sortType){
+    setSort(type)
+
+   }
 
    
       function Testing(){

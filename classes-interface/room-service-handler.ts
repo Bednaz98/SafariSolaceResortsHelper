@@ -4,7 +4,7 @@ import { ServiceRequest } from "./api-entities";
 import { appContext } from "./app-conext";
 
 
-enum sortType {
+export enum sortType {
    Ordered ,
    Processing,
    Completed ,
@@ -24,7 +24,6 @@ export default class RoomServiceHandlerAPIHandler implements RoomServiceHandlerI
     private useURL:string = "http://20.124.74.192:3000";
     private devMode:boolean = false;
     private IndexURL =0;
-    private context = useContext(appContext);
     //constructor
     constructor(dev:boolean = false, IndexURL=1){
         this.devMode=dev;
