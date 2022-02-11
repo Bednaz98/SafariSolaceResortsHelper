@@ -18,6 +18,15 @@ export default function RoomService(){
     const [FirstRefresh, setFirstRefresh] = useState(false)
     const handler = new RoomServiceHandlerAPIHandler(true)
 
+    useEffect(() => {
+        grabServiceRequest(sortType.All)
+    
+      return () => {
+        
+      }
+    }, [])
+    
+
 
    async function grabServiceRequest(type:sortType){
     
@@ -72,7 +81,7 @@ export default function RoomService(){
             return <FlatList
             data={data}
             keyExtractor={(item) => v4()}
-            renderItem={({ item }) => { return (<RoomServiceRequest  openTitle = {"testing"} serviceRequest={item}    /> ); } }
+            renderItem={({ item }) => { return (<RoomServiceRequest  openTitle = {`Room: ${item?.room ?? 'Invalid'}, ${item?.status ?? 'Invalid'}`} serviceRequest={item}    /> ); } }
         />
         }
         else return <BasicText text={`No request found for ${sortType[sort]}`}/>

@@ -15,7 +15,6 @@ export default function RoomServiceRequest(props){
 
 
     const handler = new RoomServiceHandlerAPIHandler()
-    handler.markAsProcessed(serviceRequest.id)
     
 
     function SwitchButtonDisplay(){
