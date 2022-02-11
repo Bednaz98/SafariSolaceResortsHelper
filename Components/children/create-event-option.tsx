@@ -123,8 +123,8 @@ export default function CreateEventOption(props:{allEvents: Evvent[], setAllEven
                 <BasicButton onPress={()=>{setShowDatePicker(true); setShowStartTimePicker(true); setShowEndTimePicker(true); setShowDateAndTime(true); }  } title={'set date and time'}/>
                 <DateAndTime/>
                 <BasicText text={`Start Date: ${date.toDateString()}`}/>
-                <BasicText text={`Start Time: ${startTime.toLocaleTimeString().slice(0,-3)} ${startAntePost}`}/>
-                <BasicText text={`End Time: ${endTime.toLocaleTimeString().slice(0,-3)} ${endAntePost}\n\n`}/>
+                <BasicText text={`Start Time: ${startTime.toLocaleTimeString().slice(0,-3)}`}/>
+                <BasicText text={`End Time: ${endTime.toLocaleTimeString().slice(0,-3)}\n\n`}/>
                 {/* <BasicInputText value={startTime ?? ''} onChangeText={setStart} placeholder={'start time'} keyboardType={'numeric'}/> */}
                 {/* <BasicInputText value={endTime ?? ''} onChangeText={setEnd} placeholder={'end time'}/> */}
                 <BasicButton onPress={()=>UpdateAllEventsState(inputFieldsProps)} title={'Update Event List'}/>
