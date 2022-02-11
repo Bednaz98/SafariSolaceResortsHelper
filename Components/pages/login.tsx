@@ -19,13 +19,12 @@ export default function LoginPage(props) {
 
     const employee = new employeeAPIHandler(true);
     
-    const response = employee.login(userName, password);
-
-    if (response != null) {
-    const emp = await response;
-    context.setUser(emp);
-    await AsyncStorage.setItem("user", JSON.stringify(emp));
-    setPage();
+    const response = await employee.login(userName, password);
+    const emp = response;
+    if(emp?.id){
+      context.setUser(emp);
+      await AsyncStorage.setItem("user", JSON.stringify(emp));
+      setPage();
     }
     else {
         alert("Login failed");

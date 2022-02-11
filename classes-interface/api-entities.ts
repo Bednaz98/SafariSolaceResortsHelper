@@ -32,7 +32,6 @@ export interface Event{
 }
 
 export interface ServiceRequest{
-    length: any;
     id: string
     room: string
     created: number
