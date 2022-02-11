@@ -25,11 +25,15 @@ export default function LoginPage(props) {
     const emp = await response;
     context.setUser(emp);
     await AsyncStorage.setItem("user", JSON.stringify(emp));
-    props.setPage(1);
+    setPage();
     }
     else {
         alert("Login failed");
     }
+  }
+
+  function setPage(){
+    props.setPage(1);
   }
 
 

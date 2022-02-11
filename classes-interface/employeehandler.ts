@@ -7,7 +7,7 @@ export interface EmployeeHandlerInterface{
     /**gets all logs for manager*/
     getWorklogs(): Promise<WorkLog>
 
-    getWorklogByID(id:string): Promise<WorkLog>
+    getWorklogByID(id:number): Promise<WorkLog>
 
     clockin(wId:number , type: string ): Promise<WorkLog>
     
@@ -45,7 +45,7 @@ export default class employeeAPIHandler implements EmployeeHandlerInterface{
         return data;    
     }
 
-    async getWorklogByID(id:string) {
+    async getWorklogByID(id:number) {
         const response = await axios.get(this.getURL()+"/worklogs/"+id);
         const data:WorkLog = response.data;
         return data;    
