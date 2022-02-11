@@ -15,26 +15,20 @@ export default function RoomService(){
     const dummyArray:ServiceRequest[] = []
     const [data, setData] = useState(dummyArray);
     const [sort, setSort] = useState(sortType.All)
-    const handler = new RoomServiceHandlerAPIHandler()
-
-   useEffect(()=>{
-        //Testing(); 
-        grabServiceRequest(sort)
-   },[])
+    const [FirstRefresh, setFirstRefresh] = useState(false)
+    const handler = new RoomServiceHandlerAPIHandler(true)
 
 
    async function grabServiceRequest(type:sortType){
-    setSort(type)
+    
     try {
         const foundRequest = await handler.getAllRequest(type);
-        if(!foundRequest) setData([])
-        if(foundRequest?.length >0) setData(foundRequest)
-        else setData([])
+        if(!foundRequest) {setData([]);setSort(type)}
+        if(foundRequest?.length >0) {setData(foundRequest);setSort(type)}
+        else {setData([]);setSort(type)}
     } catch (error) {
         console.log('Failed to sort request')
     }
-
-
    }
 
    function DisplaySortType(){
@@ -52,7 +46,7 @@ export default function RoomService(){
    }
 
    
-      function Testing(){
+/*       function Testing(){
         let testStack:ServiceRequest[] =[]
         for(let i =0; i <10; i++ ){
             let dummyOffering:Offering={
@@ -71,7 +65,7 @@ export default function RoomService(){
             testStack.push( dummy )
         }
         setData(testStack);
-    }
+    } */
 
     function DisplaySwitch(){
         if(data?.length >0){
@@ -89,6 +83,7 @@ export default function RoomService(){
         <BasicText text={"Room Service Request"}/>
         <DisplaySortType/>
         <FilterButtons />
+        <BasicButton title={'Refresh'} onPress={()=>grabServiceRequest(sort)} />
         <DisplaySwitch />
     </View>)
 }
