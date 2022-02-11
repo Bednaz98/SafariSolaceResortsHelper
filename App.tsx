@@ -12,7 +12,7 @@ import { themeContext, ThemeContextInterface } from './SafariSolaceStyleTools/th
 export default function App() {
 
   const [theme, setTheme] = useState(Theme.default);
-  const [pageIndex, setPageIndex] = useState(3);
+  const [pageIndex, setPageIndex] = useState(0);
   const [clockStatus, setClockStatus] = useState(false)
   const dummyEmployee:Employee = {id: 0,isManager: false,fname: '',lname: '',username: '',password: ''}
   const [user, setUser] = useState(dummyEmployee)
@@ -29,7 +29,7 @@ export default function App() {
     switch(pageIndex){
 
       //================================================================================================
-      case    /*login*/           0:{return (<> <LoginPage/> </>)}
+      case    /*login*/           0:{return (<> <LoginPage setPage={setPageIndex}/> </>)}
       case    /*room service*/    1:{return (<> <RoomService/> </>)}
       case    /*event*/           2:{return (<> <BasicText text={'Testing'}/> </>)}
       case    /*check in*/        3:{return (<> <ClockingScreen/></>)}
