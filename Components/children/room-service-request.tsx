@@ -15,18 +15,17 @@ export default function RoomServiceRequest(props){
 
 
     const handler = new RoomServiceHandlerAPIHandler()
-    handler.markAsProcessed(serviceRequest.id)
     
 
     function SwitchButtonDisplay(){
-        if(serviceRequest.status == "Ordered" )          return <BasicButton title={' Start Order'} onPress={()=>{ handler.markAsProcessed(serviceRequest.id); }} />
-        else if(serviceRequest.status ==  "Processing" ) return <BasicButton title={' Mark order as complete'} onPress={()=>{handler.markAsCompleted(serviceRequest.id); }} />
+        if(serviceRequest.status == "Ordered" )          return <BasicButton title={' Start Order'} onPress={()=>{ /*handler.markAsProcessed(serviceRequest.id);*/ }} />
+        else if(serviceRequest.status ==  "Processing" ) return <BasicButton title={' Mark order as complete'} onPress={()=>{ /*handler.markAsCompleted(serviceRequest.id);*/ }} />
         else                                             return <></>
     }
 
     function SwitchStatusDisplay(){
         return(<View style={{flexDirection:"row"}}>
-            <BasicText text={"Status"}/><BasicText text={serviceRequest.status}/><SwitchButtonDisplay/>
+            <BasicText text={"Status"}/><BasicText text={serviceRequest?.status ?? "Ordered"}/><SwitchButtonDisplay/>
         </View>)
     }
 
@@ -38,7 +37,8 @@ export default function RoomServiceRequest(props){
                 if(i==0){tempString+= `\t-${serviceRequest.requestedOffering[i].desc}`;}
                 else{tempString+= `\n\t-${serviceRequest.requestedOffering[i].desc}`;}
             }
-            return tempString
+            if(!tempString) return 'In valid request in the system'
+            return 'Hello'
         } catch (error) {
             return 'In valid request in the system'
         }
