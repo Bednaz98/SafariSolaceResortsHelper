@@ -21,13 +21,12 @@ export default function LoginPage(props) {
     
     const response = await employee.login(userName, password);
     const emp = response;
-    if(emp?.id){
-      context.setUser(emp);
-      await AsyncStorage.setItem("user", JSON.stringify(emp));
-      setPage();
-    }
-    else {
-        alert("Login failed");
+    console.log(emp);
+
+    await AsyncStorage.setItem("user", emp.username);
+    await AsyncStorage.setItem("password", emp.password);
+    if(emp.password === password && emp.username === userName){
+    setPage();
     }
   }
 
@@ -45,13 +44,13 @@ export default function LoginPage(props) {
       <PixelSpacer height={5} />
       <BasicInputText
         value={userName}
-        onChangeText={setUserName}
+        onChangeText={t => setUserName(t)}
         placeholder={"Username"}
       />
       <PixelSpacer height={5} />
       <BasicInputText
         value={password}
-        onChangeText={setPassword}
+        onChangeText={t => setPassword(t)}
         placeholder={"Password"}
       />
       <PixelSpacer height={5} />
