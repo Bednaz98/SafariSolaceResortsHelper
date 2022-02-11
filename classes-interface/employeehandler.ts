@@ -86,4 +86,4 @@ export default class employeeAPIHandler implements EmployeeHandlerInterface{
 }
 
 
-export const httpHandler1 = new employeeAPIHandler(false, 1);
+//export const httpHandler1 = new employeeAPIHandler(false, 1);
