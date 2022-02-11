@@ -13,10 +13,11 @@ export default function NavBar(props){
 
     function ManagerOptions(props){
         if(context.user.isManager){ 
+            return (
             <>
                 <BasicButton title={"View Employee State"} onPress={ ()=>{props.setPageIndex(4)}}/>
                 <BasicButton title={"Review Problems"} onPress={ ()=>{props.setPageIndex(5)}}/>
-            </>}
+            </>)}
         else{return <></>}
     }
 
