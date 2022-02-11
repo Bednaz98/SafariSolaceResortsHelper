@@ -5,6 +5,7 @@ import BasicText from "../../SafariSolaceStyleTools/basictext";
 import RoomServiceRequest from "../children/room-service-request";
 import {Offering, ServiceRequest} from '../../classes-interface/api-entities';
 import RoomServiceHandlerAPIHandler, { sortType } from "../../classes-interface/room-service-handler";
+import BasicButton from "../../SafariSolaceStyleTools/basicbutton";
 
 
 
@@ -22,9 +23,31 @@ export default function RoomService(){
    },[])
 
 
-   function grabServiceRequest(type:sortType){
+   async function grabServiceRequest(type:sortType){
     setSort(type)
+    try {
+        const foundRequest = await handler.getAllRequest(type);
+        if(foundRequest?.length >0) setData(foundRequest)
+        else setData([])
+    } catch (error) {
+        console.log('Failed to sort request')
+    }
 
+
+   }
+
+   function DisplaySortType(){
+       return <BasicText text={`Filtering Type: ${sortType[sort]}`}/>
+   }
+
+   function FilterButtons(){
+    return <View style={{flexDirection:"row"}}>
+        <BasicButton title={'All'} onPress={()=>grabServiceRequest(sortType.All)} />
+        <BasicButton title={'Ordered'} onPress={()=>grabServiceRequest(sortType.Ordered)} />
+        <BasicButton title={'Processing'} onPress={()=>grabServiceRequest(sortType.Processing)} />
+        <BasicButton title={'Complete'} onPress={()=>grabServiceRequest(sortType.Completed)} />
+        <BasicButton title={'Cancelled'} onPress={()=>grabServiceRequest(sortType.Cancelled)} />
+    </View>
    }
 
    
@@ -49,15 +72,22 @@ export default function RoomService(){
         setData(testStack);
     }
 
-    return(<View>
-        <BasicText text={"Room Service Request"}/>
-        
-        <FlatList
+    function DisplaySwitch(){
+        if(data?.length >0){
+            return <FlatList
             data={data}
             keyExtractor={(item) => v4()}
             renderItem={({ item }) => { return (<RoomServiceRequest  openTitle = {"testing"} serviceRequest={item}    /> ); } }
         />
+        }
+        else return <BasicText text={`No request found for ${sortType[sort]}`}/>
+    }
 
-
+    return(
+    <View>
+        <BasicText text={"Room Service Request"}/>
+        <DisplaySortType/>
+        <FilterButtons />
+        <DisplaySwitch />
     </View>)
 }
