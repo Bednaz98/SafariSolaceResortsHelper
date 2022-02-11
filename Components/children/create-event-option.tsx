@@ -27,22 +27,24 @@ export default function CreateEventOption(props:{allEvents: Evvent[], setAllEven
     //<BasicText text={(`${(new Date(context.reservationData.checkOut ?? 'N/A')).toDateString()} At: ${(new Date(context.reservationData.checkOut ?? "N/A")).toLocaleTimeString() }`)}/>
     //useEffect(()=>{setTimeout(()=>setShowDateAndTime(false),300)  }, [endTime])
 
-    function formatStartTime(time: Date){
+    function formattedStartTime(time: Date){
         const hours = time.getHours()
 
         if (hours < 1 || hours > 12){
             time.setHours(time.getHours() -12)
-            setStart(time || startTime)
+            //setStart(time || startTime)
         }
-        else{
-            setStart(time || startTime)
-        }
+        // else{
+        //     setStart(time || startTime)
+        // }
 
         if (hours < 12) setStartAntePost('AM')
         else setStartAntePost("PM")
+        const formattedTime = time.toLocaleTimeString().slice(0,-3)
+        return(`${formattedTime} ${startAntePost}`)
     }
 
-    function formatEndTime(time: Date){
+    function formattedEndTime(time: Date){
         const hours = time.getHours()
         if (hours < 1 || hours > 12){
             time.setHours(time.getHours() -12)
@@ -57,8 +59,6 @@ export default function CreateEventOption(props:{allEvents: Evvent[], setAllEven
 
     }
 
-
-
     function RenderStartTime(){
         return(
             <DateTimePicker
@@ -67,7 +67,7 @@ export default function CreateEventOption(props:{allEvents: Evvent[], setAllEven
             mode={'time'}
             is24Hour={false}
             display="clock"
-            onChange={(event, selectedTime: Date)=>{console.log("start on change", selectedTime.toLocaleTimeString()); setShowStartTimePicker(false); formatStartTime(selectedTime || startTime)}}
+            onChange={(event, selectedTime: Date)=>{console.log("start on change", selectedTime.toLocaleTimeString()); setShowStartTimePicker(false); setStart(selectedTime || startTime)}}
         />) 
     }
 
@@ -79,7 +79,7 @@ export default function CreateEventOption(props:{allEvents: Evvent[], setAllEven
             mode={'time'}
             is24Hour={false}
             display="clock"
-            onChange={(event, selectedTime: Date)=>{console.log("end on change",selectedTime.toLocaleTimeString()); setShowEndTimePicker(false); formatEndTime(selectedTime || endTime)}}
+            onChange={(event, selectedTime: Date)=>{console.log("end on change",selectedTime.toLocaleTimeString()); setShowEndTimePicker(false); setEnd(selectedTime || endTime)}}
         />) 
     }
 
@@ -111,10 +111,10 @@ export default function CreateEventOption(props:{allEvents: Evvent[], setAllEven
         else return (<></>) 
     }
 
-    const createEventStates = {title: title, desc: desc, startTime: startTime, endTime: endTime, location: location, allEvents: props.allEvents, setAllEvents: props.setAllEvents}
+    const createEventStates = {title: title, desc: desc, startTime: startTime, endTime: endTime, location: location, allEvents: props.allEvents, setAllEvents: props.setAllEvents, startAntePost: startAntePost, endAntePost: endAntePost}
 
     //console.log(showDatePicker)
-    function InputFields(props){
+    function InputFields(inputFieldsProps){
         return(
             <>
                 <BasicInputText value={title} onChangeText={setTitle} placeholder={'title'}/>
@@ -127,7 +127,7 @@ export default function CreateEventOption(props:{allEvents: Evvent[], setAllEven
                 <BasicText text={`End Time: ${endTime.toLocaleTimeString().slice(0,-3)} ${endAntePost}\n\n`}/>
                 {/* <BasicInputText value={startTime ?? ''} onChangeText={setStart} placeholder={'start time'} keyboardType={'numeric'}/> */}
                 {/* <BasicInputText value={endTime ?? ''} onChangeText={setEnd} placeholder={'end time'}/> */}
-                <BasicButton onPress={()=>UpdateAllEventsState(props)} title={'Update Event List'}/>
+                <BasicButton onPress={()=>UpdateAllEventsState(inputFieldsProps)} title={'Update Event List'}/>
             </>
         )
     }
