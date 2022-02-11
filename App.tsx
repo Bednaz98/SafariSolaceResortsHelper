@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Employee } from './classes-interface/api-entities';
 import { appContext, AppContextInterface } from './classes-interface/app-conext';
+import NavBar from './Components/children/nav-bar';
 import ClockingScreen from './Components/pages/clocking';
 import EventsPage from './Components/pages/events-page';
 import LoginPage from './Components/pages/login';
@@ -30,12 +31,12 @@ export default function App() {
     switch(pageIndex){
 
       //================================================================================================
-      case    /*login*/           0:{return (<> <LoginPage/> </>)}
-      case    /*room service*/    1:{return (<> <RoomService/> </>)}
-      case    /*event*/           2:{return (<> <BasicText text={'Testing'}/> </>)}
-      case    /*check in*/        3:{return (<> <ClockingScreen/></>)}
-      case    /*status check*/    4:{return (<> <BasicText text={'Testing'}/> </>)}
-      case    /*problem*/         5:{return (<> <BasicText text={'Testing'}/> </>)}
+      case    /*login*/           0:{return (<> <LoginPage setPage={setPageIndex}/> </>)}
+      case    /*room service*/    1:{return (<> <NavBar setPageIndex={setPageIndex} /><RoomService/> </>)}
+      case    /*event*/           2:{return (<> <NavBar setPageIndex={setPageIndex} /><BasicText text={'Testing'}/> </>)}
+      case    /*check in*/        3:{return (<> <NavBar setPageIndex={setPageIndex} /><ClockingScreen/></>)}
+      case    /*status check*/    4:{return (<> <NavBar setPageIndex={setPageIndex} /><BasicText text={'Testing'}/> </>)}
+      case    /*problem*/         5:{return (<> <NavBar setPageIndex={setPageIndex} /><BasicText text={'Testing'}/> </>)}
       //================================================================================================
       case    /*kris*/            6:{return (<><EventsPage/></>)}
       case    /*john*/            7:{return (<> <RoomService/> </>)}

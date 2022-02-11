@@ -38,10 +38,7 @@ export default class EventAPIHandler implements EventHandlerInterface{
     * it will return the production URL, if true, it will return 'http//localhost:[port]'*/
     private getURL(){
         if(!this.devMode){ return this.useURL} //postman mock
-        switch(this.IndexURL){
-            case 0:{ return ''}
-            case 1:{ return ''}
-        }
+        else return "https://d52f8991-f077-4c37-a337-e3679d255a88.mock.pstmn.io"
     }
 
     async getAllEvents() {
@@ -83,6 +80,3 @@ export default class EventAPIHandler implements EventHandlerInterface{
     }
         
 }
-
-
-export const httpHandler1 = new  EventAPIHandler(false, 1);

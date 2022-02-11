@@ -4,7 +4,7 @@ import { ServiceRequest } from "./api-entities";
 import { appContext } from "./app-conext";
 
 
-enum sortType {
+export enum sortType {
    Ordered ,
    Processing,
    Completed ,
@@ -24,7 +24,6 @@ export default class RoomServiceHandlerAPIHandler implements RoomServiceHandlerI
     private useURL:string = "http://20.124.74.192:3000";
     private devMode:boolean = false;
     private IndexURL =0;
-    private context = useContext(appContext);
     //constructor
     constructor(dev:boolean = false, IndexURL=1){
         this.devMode=dev;
@@ -36,17 +35,15 @@ export default class RoomServiceHandlerAPIHandler implements RoomServiceHandlerI
     * it will return the production URL, if true, it will return 'http//localhost:[port]'*/
     private getURL(){
         if(!this.devMode){ return this.useURL} //postman mock
-        switch(this.IndexURL){
-            case 0:{ return ''}
-            case 1:{ return ''}
-        }
+        else return "https://d52f8991-f077-4c37-a337-e3679d255a88.mock.pstmn.io"
+
     }
     
     async getAllRequest(type: sortType) {
-        const response = await axios.get(this.getURL()+"/service-requests");
+        const response = await axios.get(this.getURL()+"/servicerequests");
         const data:ServiceRequest[] = response.data;
         if(type == sortType.All){
-        return data;
+            return data;
         }else{
             let newData:ServiceRequest[] = [];
             for(let i=0; i<data.length; i++){
@@ -59,14 +56,14 @@ export default class RoomServiceHandlerAPIHandler implements RoomServiceHandlerI
     }
 
     async markAsProcessed(id:string) {
-        const response = await axios.put(this.getURL()+"/service-requests/"+id, {
+        const response = await axios.put(this.getURL()+"/servicerequests/"+id, {
             status: "Processing"
         });
         const data:ServiceRequest = response.data;
         return data;
     }
     async markAsCompleted(id:string) {
-        const response = await axios.put(this.getURL()+"/service-requests/"+id, {
+        const response = await axios.put(this.getURL()+"/servicerequests/"+id, {
             status: "Completed"
         });
         const data:ServiceRequest = response.data;
