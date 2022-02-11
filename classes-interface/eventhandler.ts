@@ -83,6 +83,3 @@ export default class EventAPIHandler implements EventHandlerInterface{
     }
         
 }
-
-
-export const httpHandler1 = new  EventAPIHandler(false, 1);
