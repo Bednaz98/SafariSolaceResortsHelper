@@ -5,7 +5,7 @@ import { appContext } from "./app-conext";
 
 export interface EmployeeHandlerInterface{
     /**gets all logs for manager*/
-    getWorklogs(): Promise<WorkLog>
+    getWorklogs(): Promise<WorkLog[]>
 
     getWorklogByID(id:number): Promise<WorkLog>
 
@@ -41,7 +41,7 @@ export default class employeeAPIHandler implements EmployeeHandlerInterface{
 
     async getWorklogs() {
         const response = await axios.get(this.getURL()+"/worklogs");
-        const data:WorkLog = response.data;
+        const data:WorkLog[] = response.data;
         return data;    
     }
 
