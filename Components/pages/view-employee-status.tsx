@@ -3,7 +3,7 @@ import { View } from "react-native"
 import { Employee, WorkLog } from "../../classes-interface/api-entities"
 import employeeAPIHandler, { EmployeeHandlerInterface } from "../../classes-interface/employeehandler"
 import BasicText from "../../SafariSolaceStyleTools/basictext"
-import { GetDateFromNum } from "../children/event-date-formatting"
+import { GetDateFromNum } from "../children/date-formatting"
 
 export default function ViewEmployeeStatus(){
     //get employee statuses
@@ -23,7 +23,7 @@ export default function ViewEmployeeStatus(){
     function LinkEmployee(worklogID: number){
         const dummyEmployee: Employee[] = [{id: 123,isManager: false,fname: 'dude',lname: 'bro',username: 'yoyoyo',password: 'hmm'}]
         const employee: Employee = dummyEmployee.find((employee)=>{return(employee.id === worklogID)}) //must have return in order to work
-        console.log("employee", employee)
+        //console.log("employee", employee)
         if(!employee) return "no name found" //in case no match is made
         else return(employee.fname)
     }

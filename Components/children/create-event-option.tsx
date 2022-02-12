@@ -1,19 +1,17 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import BasicButton from "../../SafariSolaceStyleTools/basicbutton";
 import BasicInputText from "../../SafariSolaceStyleTools/basicinputtext";
 import BasicModal from "../../SafariSolaceStyleTools/basicmodal";
 import { Event as Evvent } from "../../classes-interface/api-entities"
 import UpdateAllEventsState from "./update-allEvents-state";
-import DateTimePicker from '@react-native-community/datetimepicker';
 import BasicText from "../../SafariSolaceStyleTools/basictext";
-import { View, Text } from "react-native";
+import {RenderDatePicker, RenderTimePicker } from "./event-date-and-time-picker";
 
 export default function CreateEventOption(props:{allEvents: Evvent[], setAllEvents: Function}){
 
     const [title, setTitle] = useState<string>("")
     const [desc, setDesc] = useState<string>("")
     const [date, setDate] = useState(new Date());
-    //const [time, settime] = useState(new Date())
     const [showDateAndTime, setShowDateAndTime] = useState(false)
     const [showDatePicker, setShowDatePicker]= useState(false)
     const [showStartTimePicker, setShowStartTimePicker]= useState(false)
@@ -24,19 +22,12 @@ export default function CreateEventOption(props:{allEvents: Evvent[], setAllEven
     const [endAntePost, setEndAntePost] = useState("PM")
     const [location, setLocation] = useState<string>("")
 
-    //<BasicText text={(`${(new Date(context.reservationData.checkOut ?? 'N/A')).toDateString()} At: ${(new Date(context.reservationData.checkOut ?? "N/A")).toLocaleTimeString() }`)}/>
-    //useEffect(()=>{setTimeout(()=>setShowDateAndTime(false),300)  }, [endTime])
-
     function formattedStartTime(time: Date){
         const hours = time.getHours()
 
         if (hours < 1 || hours > 12){
             time.setHours(time.getHours() -12)
-            //setStart(time || startTime)
         }
-        // else{
-        //     setStart(time || startTime)
-        // }
 
         if (hours < 12) setStartAntePost('AM')
         else setStartAntePost("PM")
@@ -59,53 +50,18 @@ export default function CreateEventOption(props:{allEvents: Evvent[], setAllEven
 
     }
 
-    function RenderStartTime(){
-        return(
-            <DateTimePicker
-            testID="dateTimePicker"
-            value={startTime}
-            mode={'time'}
-            is24Hour={false}
-            display="clock"
-            onChange={(event, selectedTime: Date)=>{console.log("start on change", selectedTime.toLocaleTimeString()); setShowStartTimePicker(false); setStart(selectedTime || startTime)}}
-        />) 
-    }
-
-    function RenderEndTime(){
-        return(
-            <DateTimePicker
-            testID="dateTimePicker"
-            value={endTime}
-            mode={'time'}
-            is24Hour={false}
-            display="clock"
-            onChange={(event, selectedTime: Date)=>{console.log("end on change",selectedTime.toLocaleTimeString()); setShowEndTimePicker(false); setEnd(selectedTime || endTime)}}
-        />) 
-    }
-
-    function RenderDate(){
-        return(<DateTimePicker
-            testID="dateTimePicker"
-            value={date}
-            mode={'date'}
-            is24Hour={false}
-            display="default"
-            onChange={(event, selectedDate)=>{console.log("date on Change"); setShowDatePicker(false); setDate(selectedDate || date)}}/> 
-        )
-    }
-
     function DateAndTime(){
         if (showDateAndTime){
             if(showDatePicker){
-                return (<RenderDate/>)
+                return (<RenderDatePicker value={date} hide={()=>{setShowDatePicker(false)}} setDate={()=>setDate(date)}/>)
             }
             else if(showStartTimePicker){
                 return (
-                    <RenderStartTime/>
+                    <RenderTimePicker value={startTime} hide={()=>setShowStartTimePicker(false)} setTime={()=>setStart(startTime)}/>
                 )
             }
             else if (showEndTimePicker )
-                {return (<RenderEndTime/>)}
+                {return (<RenderTimePicker value={endTime} hide={()=>setShowEndTimePicker(false)} setTime={()=>setEnd(startTime)}/>)}
             else return (<></>)
         }
         else return (<></>) 
@@ -125,8 +81,6 @@ export default function CreateEventOption(props:{allEvents: Evvent[], setAllEven
                 <BasicText text={`Start Date: ${date.toDateString()}`}/>
                 <BasicText text={`Start Time: ${startTime.toLocaleTimeString().slice(0,-3)}`}/>
                 <BasicText text={`End Time: ${endTime.toLocaleTimeString().slice(0,-3)}\n\n`}/>
-                {/* <BasicInputText value={startTime ?? ''} onChangeText={setStart} placeholder={'start time'} keyboardType={'numeric'}/> */}
-                {/* <BasicInputText value={endTime ?? ''} onChangeText={setEnd} placeholder={'end time'}/> */}
                 <BasicButton onPress={()=>UpdateAllEventsState(inputFieldsProps)} title={'Update Event List'}/>
             </>
         )

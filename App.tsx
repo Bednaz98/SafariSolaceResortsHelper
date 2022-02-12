@@ -15,7 +15,7 @@ import { themeContext, ThemeContextInterface } from './SafariSolaceStyleTools/th
 export default function App() {
 
   const [theme, setTheme] = useState(Theme.default);
-  const [pageIndex, setPageIndex] = useState(4);
+  const [pageIndex, setPageIndex] = useState(6);
   const [clockStatus, setClockStatus] = useState(false)
   const dummyEmployee:Employee = {id: 0,isManager: false,fname: '',lname: '',username: '',password: ''}
   const [user, setUser] = useState(dummyEmployee)
