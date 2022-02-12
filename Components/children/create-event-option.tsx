@@ -18,56 +18,35 @@ export default function CreateEventOption(props:{allEvents: Evvent[], setAllEven
     const [showEndTimePicker, setShowEndTimePicker] = useState(false)
     const [startTime, setStart] = useState(()=>{let date = new Date(); if (date.getHours() > 12) {date.setHours(date.getHours()-12); return date} else{return date}})
     const [endTime, setEnd] = useState(()=>{let date = new Date(); if (date.getHours() > 12) {date.setHours(date.getHours()-12); return date} else{return date}})
-    const [startAntePost, setStartAntePost] = useState("PM")
-    const [endAntePost, setEndAntePost] = useState("PM")
     const [location, setLocation] = useState<string>("")
 
-    function formattedStartTime(time: Date){
-        const hours = time.getHours()
-
-        if (hours < 1 || hours > 12){
-            time.setHours(time.getHours() -12)
-        }
-
-        if (hours < 12) setStartAntePost('AM')
-        else setStartAntePost("PM")
-        const formattedTime = time.toLocaleTimeString().slice(0,-3)
-        return(`${formattedTime} ${startAntePost}`)
-    }
-
-    function formattedEndTime(time: Date){
-        const hours = time.getHours()
-        if (hours < 1 || hours > 12){
-            time.setHours(time.getHours() -12)
-            setEnd(time || startTime)
-        }
-        else{
-            setEnd(time || startTime)
-        }
-
-        if (hours < 12) setEndAntePost('AM')
-        else setEndAntePost("PM")
-
-    }
+    useEffect(()=>{
+        console.log("Date changed and is", date.getDate())
+        console.log("Date changed startTime is", startTime.toDateString(), "::" , startTime.getDate())
+        console.log("Date changed startTime is", startTime, "::" , startTime.getDate(), '::', startTime.getMonth()+1)
+        const newDate = date.getTime() + startTime.getTime() 
+    
+    
+    }, [date])
 
     function DateAndTime(){
         if (showDateAndTime){
             if(showDatePicker){
-                return (<RenderDatePicker value={date} hide={()=>{setShowDatePicker(false)}} setDate={()=>setDate(date)}/>)
+                return (<RenderDatePicker value={date} hide={()=>{setShowDatePicker(false)}} setDate={(val)=>setDate(val)}/>)
             }
             else if(showStartTimePicker){
                 return (
-                    <RenderTimePicker value={startTime} hide={()=>setShowStartTimePicker(false)} setTime={()=>setStart(startTime)}/>
+                    <RenderTimePicker value={startTime} hide={()=>setShowStartTimePicker(false)} setTime={(val)=>setStart(val)}/>
                 )
             }
             else if (showEndTimePicker )
-                {return (<RenderTimePicker value={endTime} hide={()=>setShowEndTimePicker(false)} setTime={()=>setEnd(startTime)}/>)}
+                {return (<RenderTimePicker value={endTime} hide={()=>setShowEndTimePicker(false)} setTime={(val)=>setEnd(val)}/>)}
             else return (<></>)
         }
         else return (<></>) 
     }
 
-    const createEventStates = {title: title, desc: desc, startTime: startTime, endTime: endTime, location: location, allEvents: props.allEvents, setAllEvents: props.setAllEvents, startAntePost: startAntePost, endAntePost: endAntePost}
+    const createEventStates = {title: title, desc: desc, startTime: startTime, endTime: endTime, location: location, allEvents: props.allEvents, setAllEvents: props.setAllEvents, date: date}
 
     //console.log(showDatePicker)
     function InputFields(inputFieldsProps){

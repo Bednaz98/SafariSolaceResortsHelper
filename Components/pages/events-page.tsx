@@ -13,8 +13,8 @@ export default function EventsPage(){
             id: 'dummyevent1',
             title: 'title',
             desc: 'desc',
-            startTime: 100,
-            endTime: 200,
+            startTime: 100000,
+            endTime: 2000000,
             location: 'location',
             status: "On Schedule"
         },
@@ -22,8 +22,8 @@ export default function EventsPage(){
             id: 'dummyevent2',
             title: 'title2',
             desc: 'desc2',
-            startTime: 300,
-            endTime: 400,
+            startTime: 3000000,
+            endTime: 4000000,
             location: 'location2',
             status: "Cancelled"
         }

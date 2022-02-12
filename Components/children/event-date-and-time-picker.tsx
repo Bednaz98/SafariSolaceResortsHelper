@@ -8,7 +8,7 @@ export function RenderTimePicker(props:{value: Date, hide: Function, setTime: Fu
         mode={'time'}
         is24Hour={false}
         display="clock"
-        onChange={(event, selectedTime: Date)=>{console.log("end on change",selectedTime.toLocaleTimeString()); props.hide(false); props.setTime(selectedTime || props.value)}}
+        onChange={(event, selectedTime: Date)=>{console.log("end on change",selectedTime.toLocaleTimeString()); props.hide(false); props.setTime(selectedTime)}}
     />) 
 }
 
@@ -20,6 +20,6 @@ export function RenderDatePicker(props:{value: Date, hide: Function, setDate: Fu
         mode={'date'}
         is24Hour={false}
         display="default"
-        onChange={(event, selectedTime: Date)=>{console.log("end on change",selectedTime.toLocaleTimeString()); props.hide(false); props.setDate(selectedTime || props.value)}}
+        onChange={(event, selectedTime: Date)=>{console.log("end on change",selectedTime.toLocaleTimeString()); props.hide(false); props.setDate(selectedTime)}}
     />) 
 }

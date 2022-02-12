@@ -5,13 +5,13 @@ import FormattedTime from "./date-formatting"
 
 
 export default function FormatSingleEvent(props:{event: Evvent, index:number, allEvents?: Evvent[], setAllEvents?: Function, filter?: string}){
-    const {id,title,desc,startTime,endTime,location,status} = props.event   
+    const {id,title,desc,startTime,endTime,location,status} = props.event  //the properties for each event which comes from all events
     
-    const startTimeToDate = new Date(startTime)
-    const date = startTimeToDate.getDay()
-    const endTimeToDate = new Date(endTime)
-    const startTimeFormatted = FormattedTime(startTimeToDate)
-    const endTimeFormatted = FormattedTime(endTimeToDate)
+    //const startTimeToDate = new Date(startTime)
+    //const date = startTimeToDate.getDay()
+    //const endTimeToDate = new Date(endTime)
+    const startTimeFormatted = FormattedTime(startTime)
+    const endTimeFormatted = FormattedTime(endTime)
     //console.log("🚀 ~ file: format-single-event.tsx ~ line 14 ~ FormatSingleEvent ~ endTimeFormatted", endTimeFormatted)
 
     function CancelEvent(id: string){
@@ -29,7 +29,6 @@ export default function FormatSingleEvent(props:{event: Evvent, index:number, al
             <BasicText text={`id: ${id}`}/>
             <BasicText text={`title: ${title}`}/>
             <BasicText text={`description: ${desc}`}/>
-            <BasicText text={`date: ${date}`}/>
             <BasicText text={`start time: ${startTimeFormatted}`}/>
             <BasicText text={`end time: ${endTimeFormatted}`}/>
             <BasicText text={`location: ${location}`}/>
