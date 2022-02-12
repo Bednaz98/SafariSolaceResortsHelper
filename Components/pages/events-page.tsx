@@ -6,6 +6,7 @@ import BasicButton from "../../STYLING-TOOLS/basicbutton"
 import CreateEventOption from "../CHILDREN/EVENTS/events-create-option"
 import FormatSingleEvent from "../CHILDREN/EVENTS/event-format-single"
 import GetEventByID from "../CHILDREN/EVENTS/event-get-by-id"
+import EventFormatSingle from "../CHILDREN/EVENTS/event-format-single"
 
 export default function EventsPage(){
     const eventhandle: EventHandlerInterface = new EventAPIHandler(true)
@@ -30,13 +31,15 @@ export default function EventsPage(){
     ]
     const [allEvents, setAllEvents] = useState(dummyEvents)
     const [filteredEventID, setFilteredEventID] = useState<string>("")
-    //map all events into a scroll list
+    
+    /**map all events into a scrolling list */
     function FormattedEventsList(){
-        const formattedEvents = allEvents.map((event, index) => {return <FormatSingleEvent event={event} index={index} allEvents={allEvents} setAllEvents={setAllEvents} filter={filteredEventID}/>})        
+
+        const eventsArrayFormat = allEvents.map((event, index) => {return <EventFormatSingle event={event} index={index} allEvents={allEvents} setAllEvents={setAllEvents} filter={filteredEventID}/>})        
         return(
             <View>
                 <ScrollView>
-                {formattedEvents}
+                {eventsArrayFormat}
                 </ScrollView>
             </View>
         )

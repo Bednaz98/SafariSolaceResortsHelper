@@ -5,17 +5,15 @@ import FormattedTime from "../date-formatting"
 
 
 
-export default function FormatSingleEvent(props:{event: Evvent, index:number, allEvents?: Evvent[], setAllEvents?: Function, filter?: string}){
-    const {id,title,desc,startTime,endTime,location,status} = props.event  //the properties for each event which comes from all events
+export default function EventFormatSingle(props:{event: Evvent, index:number, allEvents?: Evvent[], setAllEvents?: Function, filter?: string}){
     
-    //const startTimeToDate = new Date(startTime)
-    //const date = startTimeToDate.getDay()
-    //const endTimeToDate = new Date(endTime)
-    const startTimeFormatted = FormattedTime(startTime)
+    //prepare the event properties currently being mapped 
+    const {id,title,desc,startTime,endTime,location,status} = props.event  
+    
+    const starttimeFormatted = FormattedTime(startTime)
     const endTimeFormatted = FormattedTime(endTime)
-    //console.log("🚀 ~ file: format-single-event.tsx ~ line 14 ~ FormatSingleEvent ~ endTimeFormatted", endTimeFormatted)
 
-    function CancelEvent(id: string){
+    function EventCancel(id: string){
         const newEventList = props.allEvents.map(event=> {
             if(event.id === id) {event.status = "Cancelled"; return(event)} 
             else{return event} 
@@ -30,11 +28,11 @@ export default function FormatSingleEvent(props:{event: Evvent, index:number, al
             <BasicText text={`id: ${id}`}/>
             <BasicText text={`title: ${title}`}/>
             <BasicText text={`description: ${desc}`}/>
-            <BasicText text={`start time: ${startTimeFormatted}`}/>
+            <BasicText text={`start time: ${starttimeFormatted}`}/>
             <BasicText text={`end time: ${endTimeFormatted}`}/>
             <BasicText text={`location: ${location}`}/>
             <BasicText text={`status: ${status}`}/>
-            <BasicButton title={"Cancel Event"} onPress={()=>CancelEvent(props.event.id)}></BasicButton>
+            <BasicButton title={"Cancel Event"} onPress={()=>EventCancel(props.event.id)}></BasicButton>
         </> 
 
         :
