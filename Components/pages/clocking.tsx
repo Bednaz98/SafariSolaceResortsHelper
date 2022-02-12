@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { View } from "react-native";
-import { appContext } from "../../classes-interface/app-conext";
-import employeeAPIHandler from "../../classes-interface/employeehandler";
-import BasicButton from "../../SafariSolaceStyleTools/basicbutton";
-import BasicText from "../../SafariSolaceStyleTools/basictext";
+import { appContext } from "../../CLASSES-AND-INTERFACES/app-conext";
+import employeeAPIHandler from "../../CLASSES-AND-INTERFACES/employeehandler";
+import BasicButton from "../../STYLING-TOOLS/basicbutton";
+import BasicText from "../../STYLING-TOOLS/basictext";
 
 
 

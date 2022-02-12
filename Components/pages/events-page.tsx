@@ -1,11 +1,11 @@
 import { useState } from "react"
 import { FlatList, ScrollView, View, Text } from "react-native"
-import { Event } from "../../classes-interface/api-entities"
-import EventAPIHandler, { EventHandlerInterface } from "../../classes-interface/eventhandler"
-import BasicButton from "../../SafariSolaceStyleTools/basicbutton"
-import CreateEventOption from "../children/EVENTS/events-create-option"
-import FormatSingleEvent from "../children/EVENTS/event-format-single"
-import GetEventByID from "../children/EVENTS/event-get-by-id"
+import { Event } from "../../CLASSES-AND-INTERFACES/api-entities"
+import EventAPIHandler, { EventHandlerInterface } from "../../CLASSES-AND-INTERFACES/eventhandler"
+import BasicButton from "../../STYLING-TOOLS/basicbutton"
+import CreateEventOption from "../CHILDREN/EVENTS/events-create-option"
+import FormatSingleEvent from "../CHILDREN/EVENTS/event-format-single"
+import GetEventByID from "../CHILDREN/EVENTS/event-get-by-id"
 
 export default function EventsPage(){
     const eventhandle: EventHandlerInterface = new EventAPIHandler(true)

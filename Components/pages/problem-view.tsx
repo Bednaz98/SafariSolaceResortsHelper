@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { ScrollView, View } from "react-native";
-import { Problem } from "../../classes-interface/api-entities";
-import ProblemAPIHandler, { ProblemHandlerInterface } from "../../classes-interface/problemhandler";
-import BasicText from "../../SafariSolaceStyleTools/basictext";
-import ProblemItem from "../children/problem-item";
+import { Problem } from "../../CLASSES-AND-INTERFACES/api-entities";
+import ProblemAPIHandler, { ProblemHandlerInterface } from "../../CLASSES-AND-INTERFACES/problemhandler";
+import BasicText from "../../STYLING-TOOLS/basictext";
+import ProblemItem from "../CHILDREN/problem-item";
 
 export default function ProblemView(){
 

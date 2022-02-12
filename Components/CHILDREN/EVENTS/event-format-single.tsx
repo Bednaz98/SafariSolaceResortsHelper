@@ -1,7 +1,8 @@
-import { Event as Evvent } from "../../../classes-interface/api-entities"
-import BasicButton from "../../../SafariSolaceStyleTools/basicbutton"
-import BasicText from "../../../SafariSolaceStyleTools/basictext"
+import { Event as Evvent } from "../../../CLASSES-AND-INTERFACES/api-entities"
+import BasicButton from "../../../STYLING-TOOLS/basicbutton"
+import BasicText from "../../../STYLING-TOOLS/basictext"
 import FormattedTime from "../date-formatting"
+
 
 
 export default function FormatSingleEvent(props:{event: Evvent, index:number, allEvents?: Evvent[], setAllEvents?: Function, filter?: string}){

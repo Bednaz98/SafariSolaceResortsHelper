@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { View } from "react-native";
-import { appContext } from "../../classes-interface/app-conext";
-import BasicButton from "../../SafariSolaceStyleTools/basicbutton";
-import LogoutButton from "../pages/logoutButton";
+import { appContext } from "../../CLASSES-AND-INTERFACES/app-conext";
+import BasicButton from "../../STYLING-TOOLS/basicbutton";
+import LogoutButton from "../PAGES/logoutButton";
 
 
 

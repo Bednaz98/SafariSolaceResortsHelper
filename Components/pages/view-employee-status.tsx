@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import { View } from "react-native"
-import { Employee, WorkLog } from "../../classes-interface/api-entities"
-import employeeAPIHandler, { EmployeeHandlerInterface } from "../../classes-interface/employeehandler"
-import BasicText from "../../SafariSolaceStyleTools/basictext"
-import { GetDateFromNum } from "../children/date-formatting"
+import { Employee, WorkLog } from "../../CLASSES-AND-INTERFACES/api-entities"
+import employeeAPIHandler, { EmployeeHandlerInterface } from "../../CLASSES-AND-INTERFACES/employeehandler"
+import BasicText from "../../STYLING-TOOLS/basictext"
+import { GetDateFromNum } from "../CHILDREN/date-formatting"
 
 export default function ViewEmployeeStatus(){
     //get employee statuses

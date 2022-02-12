@@ -1,12 +1,12 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useContext, useState } from "react";
 import { View } from "react-native";
-import { appContext, AppContextInterface } from "../../classes-interface/app-conext";
-import employeeAPIHandler from "../../classes-interface/employeehandler";
-import BasicButton from "../../SafariSolaceStyleTools/basicbutton";
-import BasicInputText from "../../SafariSolaceStyleTools/basicinputtext";
-import BasicText, { TextType } from "../../SafariSolaceStyleTools/basictext";
-import PixelSpacer from "../../SafariSolaceStyleTools/pixel-spacer";
+import { appContext, AppContextInterface } from "../../CLASSES-AND-INTERFACES/app-conext";
+import employeeAPIHandler from "../../CLASSES-AND-INTERFACES/employeehandler";
+import BasicButton from "../../STYLING-TOOLS/basicbutton";
+import BasicInputText from "../../STYLING-TOOLS/basicinputtext";
+import BasicText, { TextType } from "../../STYLING-TOOLS/basictext";
+import PixelSpacer from "../../STYLING-TOOLS/pixel-spacer";
 
 
 

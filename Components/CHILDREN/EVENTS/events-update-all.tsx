@@ -1,4 +1,4 @@
-import { Event as Evvent } from "../../../classes-interface/api-entities"
+import { Event as Evvent } from "../../../CLASSES-AND-INTERFACES/api-entities"
 
 export default function UpdateAllEventsState(props){
 

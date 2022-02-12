@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { View } from "react-native";
-import { Offering, ServiceRequest } from "../../classes-interface/api-entities";
-import RoomServiceHandlerAPIHandler from "../../classes-interface/room-service-handler";
-import BasicButton from "../../SafariSolaceStyleTools/basicbutton";
-import BasicModal from "../../SafariSolaceStyleTools/basicmodal";
-import BasicText from "../../SafariSolaceStyleTools/basictext";
+import { Offering, ServiceRequest } from "../../CLASSES-AND-INTERFACES/api-entities";
+import RoomServiceHandlerAPIHandler from "../../CLASSES-AND-INTERFACES/room-service-handler";
+import BasicButton from "../../STYLING-TOOLS/basicbutton";
+import BasicModal from "../../STYLING-TOOLS/basicmodal";
+import BasicText from "../../STYLING-TOOLS/basictext";
 
 
 

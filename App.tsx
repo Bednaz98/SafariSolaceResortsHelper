@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Employee } from './classes-interface/api-entities';
-import { appContext, AppContextInterface } from './classes-interface/app-conext';
-import NavBar from './Components/children/nav-bar';
-import ClockingScreen from './Components/pages/clocking';
-import EventsPage from './Components/pages/events-page';
-import LoginPage from './Components/pages/login';
-import RoomService from './Components/pages/room-service';
-import ViewEmployeeStatus from './Components/pages/view-employee-status';
-import BasicText from './SafariSolaceStyleTools/basictext';
-import { Theme } from './SafariSolaceStyleTools/colorstyle';
-import { themeContext, ThemeContextInterface } from './SafariSolaceStyleTools/themecontext';
+import { Employee } from './CLASSES-AND-INTERFACES/api-entities';
+import { appContext, AppContextInterface } from './CLASSES-AND-INTERFACES/app-conext';
+import NavBar from './COMPONENTS/CHILDREN/nav-bar';
+import ClockingScreen from './COMPONENTS/PAGES/clocking';
+import EventsPage from './COMPONENTS/PAGES/events-page';
+import LoginPage from './COMPONENTS/PAGES/login';
+import RoomService from './COMPONENTS/PAGES/room-service';
+import ViewEmployeeStatus from './COMPONENTS/PAGES/view-employee-status';
+import BasicText from './STYLING-TOOLS/basictext';
+import { Theme } from './STYLING-TOOLS/colorstyle';
+import { themeContext, ThemeContextInterface } from './STYLING-TOOLS/themecontext';
 
 export default function App() {
 

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { FlatList, View } from "react-native";
 import { v4 } from "uuid";
-import BasicText from "../../SafariSolaceStyleTools/basictext";
-import RoomServiceRequest from "../children/room-service-request";
-import {Offering, ServiceRequest} from '../../classes-interface/api-entities';
-import RoomServiceHandlerAPIHandler, { sortType } from "../../classes-interface/room-service-handler";
-import BasicButton from "../../SafariSolaceStyleTools/basicbutton";
+import BasicText from "../../STYLING-TOOLS/basictext";
+import RoomServiceRequest from "../CHILDREN/room-service-request";
+import {Offering, ServiceRequest} from '../../CLASSES-AND-INTERFACES/api-entities';
+import RoomServiceHandlerAPIHandler, { sortType } from "../../CLASSES-AND-INTERFACES/room-service-handler";
+import BasicButton from "../../STYLING-TOOLS/basicbutton";
 
 
 

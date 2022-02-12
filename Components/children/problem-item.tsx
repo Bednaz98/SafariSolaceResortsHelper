@@ -1,8 +1,8 @@
-import { Problem } from "../../classes-interface/api-entities";
-import ProblemAPIHandler, { ProblemHandlerInterface } from "../../classes-interface/problemhandler";
-import BasicButton from "../../SafariSolaceStyleTools/basicbutton";
-import BasicModal from "../../SafariSolaceStyleTools/basicmodal";
-import BasicText from "../../SafariSolaceStyleTools/basictext";
+import { Problem } from "../../CLASSES-AND-INTERFACES/api-entities";
+import ProblemAPIHandler, { ProblemHandlerInterface } from "../../CLASSES-AND-INTERFACES/problemhandler";
+import BasicButton from "../../STYLING-TOOLS/basicbutton";
+import BasicModal from "../../STYLING-TOOLS/basicmodal";
+import BasicText from "../../STYLING-TOOLS/basictext";
 
 export default function ProblemItem(props: Problem){
 
