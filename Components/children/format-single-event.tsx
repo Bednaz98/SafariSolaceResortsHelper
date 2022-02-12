@@ -1,15 +1,16 @@
 import { Event as Evvent } from "../../classes-interface/api-entities"
 import BasicButton from "../../SafariSolaceStyleTools/basicbutton"
 import BasicText from "../../SafariSolaceStyleTools/basictext"
-import FormattedStartTime from "./event-date-formatting"
+import FormattedTime from "./event-date-formatting"
+
 
 export default function FormatSingleEvent(props:{event: Evvent, index:number, allEvents?: Evvent[], setAllEvents?: Function, filter?: string}){
     const {id,title,desc,startTime,endTime,location,status} = props.event   
     
     const startTimeToDate = new Date(startTime)
     const endTimeToDate = new Date(endTime)
-    const startTimeFormatted = FormattedStartTime(startTimeToDate)
-    const endTimeFormatted = FormattedStartTime(endTimeToDate)
+    const startTimeFormatted = FormattedTime(startTimeToDate)
+    const endTimeFormatted = FormattedTime(endTimeToDate)
 
     function CancelEvent(id: string){
         const newEventList = props.allEvents.map(event=> {

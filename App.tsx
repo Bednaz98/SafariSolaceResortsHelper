@@ -7,6 +7,7 @@ import ClockingScreen from './Components/pages/clocking';
 import EventsPage from './Components/pages/events-page';
 import LoginPage from './Components/pages/login';
 import RoomService from './Components/pages/room-service';
+import ViewEmployeeStatus from './Components/pages/view-employee-status';
 import BasicText from './SafariSolaceStyleTools/basictext';
 import { Theme } from './SafariSolaceStyleTools/colorstyle';
 import { themeContext, ThemeContextInterface } from './SafariSolaceStyleTools/themecontext';
@@ -14,7 +15,7 @@ import { themeContext, ThemeContextInterface } from './SafariSolaceStyleTools/th
 export default function App() {
 
   const [theme, setTheme] = useState(Theme.default);
-  const [pageIndex, setPageIndex] = useState(6);
+  const [pageIndex, setPageIndex] = useState(4);
   const [clockStatus, setClockStatus] = useState(false)
   const dummyEmployee:Employee = {id: 0,isManager: false,fname: '',lname: '',username: '',password: ''}
   const [user, setUser] = useState(dummyEmployee)
@@ -35,7 +36,7 @@ export default function App() {
       case    /*room service*/    1:{return (<> <NavBar setPageIndex={setPageIndex} /><RoomService/> </>)}
       case    /*event*/           2:{return (<> <NavBar setPageIndex={setPageIndex} /><BasicText text={'Testing'}/> </>)}
       case    /*check in*/        3:{return (<> <NavBar setPageIndex={setPageIndex} /><ClockingScreen/></>)}
-      case    /*status check*/    4:{return (<> <NavBar setPageIndex={setPageIndex} /><BasicText text={'Testing'}/> </>)}
+      case    /*status check*/    4:{return (<> <NavBar setPageIndex={setPageIndex} /><ViewEmployeeStatus/></>)}
       case    /*problem*/         5:{return (<> <NavBar setPageIndex={setPageIndex} /><BasicText text={'Testing'}/> </>)}
       //================================================================================================
       case    /*kris*/            6:{return (<><EventsPage/></>)}

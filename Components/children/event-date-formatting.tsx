@@ -1,4 +1,4 @@
-export default function FormattedStartTime(time: Date){
+export default function FormattedTime(time: Date){
     time.toLocaleString()
     const hours = time.getHours()
     let AMorPM = ""
@@ -9,4 +9,10 @@ export default function FormattedStartTime(time: Date){
     else AMorPM = 'PM'
     const formattedTime = time.toLocaleTimeString().slice(0,-3)
     return(`${formattedTime} ${AMorPM}`)
+}
+
+export function GetDateFromNum(num: number){
+    const date = new Date(num * 1000).toUTCString()
+    console.log(date)
+    return date
 }
