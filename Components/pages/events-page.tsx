@@ -1,20 +1,19 @@
 import { useState } from "react"
-import { FlatList, ScrollView, View, Text } from "react-native"
-import { Event } from "../../classes-interface/api-entities"
+import { ScrollView, View } from "react-native"
+import { Event as event } from "../../classes-interface/api-entities"
 import EventAPIHandler, { EventHandlerInterface } from "../../classes-interface/eventhandler"
-import BasicButton from "../../SafariSolaceStyleTools/basicbutton"
-import CreateEventOption from "../children/create-event-option"
-import FormatSingleEvent from "../children/format-single-event"
-import GetEventByID from "../children/get-event-by-ID"
+import EventFormatSingle from "../children/events/event-format-single"
+import GetEventByID from "../children/events/event-get-by-id"
+import CreateEventOption from "../children/events/events-create-option"
 
 export default function EventsPage(){
     const eventhandle: EventHandlerInterface = new EventAPIHandler(true)
-    const dummyEvents: Event[] = [{
+    const dummyEvents: event[] = [{
             id: 'dummyevent1',
             title: 'title',
             desc: 'desc',
-            startTime: 100,
-            endTime: 200,
+            startTime: 100000,
+            endTime: 2000000,
             location: 'location',
             status: "On Schedule"
         },
@@ -22,21 +21,23 @@ export default function EventsPage(){
             id: 'dummyevent2',
             title: 'title2',
             desc: 'desc2',
-            startTime: 300,
-            endTime: 400,
+            startTime: 3000000,
+            endTime: 4000000,
             location: 'location2',
             status: "Cancelled"
         }
     ]
     const [allEvents, setAllEvents] = useState(dummyEvents)
     const [filteredEventID, setFilteredEventID] = useState<string>("")
-    //map all events into a scroll list
+    
+    /**map all events into a scrolling list */
     function FormattedEventsList(){
-        const formattedEvents = allEvents.map((event, index) => {return <FormatSingleEvent event={event} index={index} allEvents={allEvents} setAllEvents={setAllEvents} filter={filteredEventID}/>})        
+
+        const eventsArrayFormat = allEvents.map((event, index) => {return <EventFormatSingle event={event} index={index} allEvents={allEvents} setAllEvents={setAllEvents} filter={filteredEventID}/>})        
         return(
             <View>
                 <ScrollView>
-                {formattedEvents}
+                {eventsArrayFormat}
                 </ScrollView>
             </View>
         )
