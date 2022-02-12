@@ -9,7 +9,7 @@ export default function FormattedTime(time: number){
     }
     if (hours < 12) AMorPM = 'AM'
     else AMorPM = 'PM'
-    //const formattedTime = date.toLocaleTimeString().slice(0,-3)
+    //const formattedTime = date.toLocaleTimeString().slice(0,-3)w
     const formattedTime = date.toDateString()
     return(`${formattedTime} ${AMorPM}`)
     //return (date.toUTCString())

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { ProgressViewIOSComponent } from "react-native";
-import EventAPIHandler, {EventHandlerInterface} from "../../classes-interface/eventhandler";
-import BasicButton from "../../SafariSolaceStyleTools/basicbutton";
-import BasicInputText from "../../SafariSolaceStyleTools/basicinputtext";
+import EventAPIHandler, {EventHandlerInterface} from "../../../classes-interface/eventhandler";
+import BasicButton from "../../../SafariSolaceStyleTools/basicbutton";
+import BasicInputText from "../../../SafariSolaceStyleTools/basicinputtext";
 
 
 export default function GetEventByID(props:{setFilteredEventID: Function}){

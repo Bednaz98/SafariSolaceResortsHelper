@@ -3,9 +3,9 @@ import { FlatList, ScrollView, View, Text } from "react-native"
 import { Event } from "../../classes-interface/api-entities"
 import EventAPIHandler, { EventHandlerInterface } from "../../classes-interface/eventhandler"
 import BasicButton from "../../SafariSolaceStyleTools/basicbutton"
-import CreateEventOption from "../children/create-event-option"
-import FormatSingleEvent from "../children/format-single-event"
-import GetEventByID from "../children/get-event-by-ID"
+import CreateEventOption from "../children/EVENTS/events-create-option"
+import FormatSingleEvent from "../children/EVENTS/event-format-single"
+import GetEventByID from "../children/EVENTS/event-get-by-id"
 
 export default function EventsPage(){
     const eventhandle: EventHandlerInterface = new EventAPIHandler(true)

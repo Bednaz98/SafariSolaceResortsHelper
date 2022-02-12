@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import BasicButton from "../../SafariSolaceStyleTools/basicbutton";
-import BasicInputText from "../../SafariSolaceStyleTools/basicinputtext";
-import BasicModal from "../../SafariSolaceStyleTools/basicmodal";
-import { Event as Evvent } from "../../classes-interface/api-entities"
-import UpdateAllEventsState from "./update-allEvents-state";
-import BasicText from "../../SafariSolaceStyleTools/basictext";
-import {RenderDatePicker, RenderTimePicker } from "./event-date-and-time-picker";
+import BasicButton from "../../../STYLING-TOOLS/basicbutton";
+import BasicInputText from "../../../STYLING-TOOLS/basicinputtext";
+import BasicModal from "../../../STYLING-TOOLS/basicmodal";
+import { Event as Evvent } from "../../../CLASSES-AND-INTERFACES/api-entities"
+
+import BasicText from "../../../STYLING-TOOLS/basictext";
+import { RenderDatePicker, RenderTimePicker } from "./event-render-time-choosers";
+import UpdateAllEventsState from "./events-update-all";
+
 
 export default function CreateEventOption(props:{allEvents: Evvent[], setAllEvents: Function}){
 
