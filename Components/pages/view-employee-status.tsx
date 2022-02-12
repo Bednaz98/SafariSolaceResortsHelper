@@ -3,7 +3,7 @@ import { View } from "react-native"
 import { Employee, WorkLog } from "../../classes-interface/api-entities"
 import employeeAPIHandler, { EmployeeHandlerInterface } from "../../classes-interface/employeehandler"
 import BasicText from "../../SafariSolaceStyleTools/basictext"
-import { GetDateFromNum } from "../children/event-date-formatting"
+import { GetDateFromNum } from "../children/date-formatting"
 
 export default function ViewEmployeeStatus(){
     //get employee statuses

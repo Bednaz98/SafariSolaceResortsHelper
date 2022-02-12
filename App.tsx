@@ -39,7 +39,7 @@ export default function App() {
       case    /*status check*/    4:{return (<> <NavBar setPageIndex={setPageIndex} /><ViewEmployeeStatus/></>)}
       case    /*problem*/         5:{return (<> <NavBar setPageIndex={setPageIndex} /><BasicText text={'Testing'}/> </>)}
       //================================================================================================
-      case    /*kris*/            6:{return (<><EventsPage/></>)}
+      case    /*kris*/            6:{return (<> <NavBar setPageIndex={setPageIndex} /><EventsPage/></>)}
       case    /*john*/            7:{return (<> <RoomService/> </>)}
       case    /*brandon*/         8:{return (<> <BasicText text={'brandon'}/> </>)}
       case    /*josh*/            9:{return (<> <BasicText text={'josh'}/>    </>)} 

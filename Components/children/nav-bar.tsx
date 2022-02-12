@@ -24,7 +24,7 @@ export default function NavBar(props){
     return (
     <View style={{flexDirection:"row"}}>
         <BasicButton title={"View Request"} onPress={ ()=>{props.setPageIndex(1)}}/>
-        <BasicButton title={"Manage Events"} onPress={ ()=>{props.setPageIndex(2)}}/>
+        <BasicButton title={"Manage Events"} onPress={ ()=>{props.setPageIndex(6)}}/>
         <BasicButton title={"Time Sheet"} onPress={ ()=>{props.setPageIndex(3)}}/>
         < ManagerOptions setPageIndex={props.setPageIndex}/>
         <LogoutButton setPage={props.setPageIndex}/>
