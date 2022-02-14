@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { View } from "react-native";
 import { appContext } from "../../classes-interface/app-conext";
 import BasicButton from "../../SafariSolaceStyleTools/basicbutton";
@@ -12,6 +12,7 @@ export default function NavBar(props){
     const context = useContext(appContext)
 
     function ManagerOptions(props){
+        console.log(context.user.isManager);
         if(context.user.isManager){ 
             return (
             <>
