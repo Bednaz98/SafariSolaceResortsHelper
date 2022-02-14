@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SafeAreaView } from 'react-native';
 import { StyleSheet, Text, View } from 'react-native';
 import { Employee } from './classes-interface/api-entities';
 import { appContext, AppContextInterface } from './classes-interface/app-conext';
@@ -33,18 +34,18 @@ export default function App() {
     switch(pageIndex){
 
       //================================================================================================
-      case    /*login*/           0:{return (<> <LoginPage setPage={setPageIndex}/> </>)}
-      case    /*room service*/    1:{return (<> <NavBar setPageIndex={setPageIndex} /><RoomService/> </>)}
-      case    /*event*/           2:{return (<> <NavBar setPageIndex={setPageIndex} /><EventsPage/></>)}
-      case    /*check in*/        3:{return (<> <NavBar setPageIndex={setPageIndex} /><ClockingScreen/></>)}
-      case    /*status check*/    4:{return (<> <NavBar setPageIndex={setPageIndex} /><ViewEmployeeStatus/></>)}
-      case    /*problem*/         5:{return (<> <NavBar setPageIndex={setPageIndex} /><ProblemView/></>)}
+      case    /*login*/           0:{return (<><LoginPage setPage={setPageIndex}/></>)}
+      case    /*room service*/    1:{return (<><NavBar setPageIndex={setPageIndex}/><RoomService/></>)}
+      case    /*event*/           2:{return (<><NavBar setPageIndex={setPageIndex}/><EventsPage/></>)}
+      case    /*check in*/        3:{return (<><NavBar setPageIndex={setPageIndex}/><ClockingScreen/></>)}
+      case    /*status check*/    4:{return (<><NavBar setPageIndex={setPageIndex}/><ViewEmployeeStatus/></>)}
+      case    /*problem*/         5:{return (<><NavBar setPageIndex={setPageIndex}/><ProblemView/></>)}
       //================================================================================================
       case    /*kris*/            6:{return (<><EventsPage/></>)}
-      case    /*john*/            7:{return (<> <RoomService/> </>)}
-      case    /*brandon*/         8:{return (<> <BasicText text={'brandon'}/> </>)}
-      case    /*josh*/            9:{return (<> <BasicText text={'josh'}/>    </>)} 
-      default                      :{return (<> <BasicText text={'Testing'}/> </>)}
+      case    /*john*/            7:{return (<><RoomService/></>)}
+      case    /*brandon*/         8:{return (<><BasicText text={'brandon'}/></>)}
+      case    /*josh*/            9:{return (<><BasicText text={'josh'}/></>)} 
+      default                      :{return (<><BasicText text={'Testing'}/></>)}
     }
   }
 
@@ -52,7 +53,9 @@ export default function App() {
     <View style={styles.container}>
       <appContext.Provider value = {initContext}>
         <themeContext.Provider value = { themeContextObject }>
+          <SafeAreaView>
           <SwitchPage/>
+          </SafeAreaView>
         </themeContext.Provider>
       </appContext.Provider>
     </View>

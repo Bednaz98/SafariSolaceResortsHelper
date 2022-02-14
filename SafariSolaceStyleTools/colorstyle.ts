@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Platform } from "react-native";
 import { themeContext } from "./themecontext";
 
 
@@ -6,65 +7,91 @@ import { themeContext } from "./themecontext";
 
 export enum Theme{
     default,
-    other
+    light,
+    dark,
+    hacker
 }
 
 export enum Color{
     Text,
+    textHeader,
+    textTitle,
     Button,
-    Modal,
+    ModalBackground,
+    ModalInner,
     InputText,
-    B,
-    C,
-    D,
-    E,
-    F
+    primaryColor,
+    SecondaryColor,
+    TertiaryColor,
 }
 
 export default function GetColor(colorType:Color){
     const context = useContext(themeContext);
+    let returnColor = '#ffffff'
 
     switch(context.theme){
-        // case Theme.default:{
-        //     switch(colorType){
-        //         case Color.Text: { return ''}
-        //         case Color.Button: { return ''}
-        //         case Color.A: { return ''}
-        //         case Color.B: { return ''}
-        //         case Color.C: { return ''}
-        //         case Color.D: { return ''}
-        //         case Color.E: { return ''}
-        //         case Color.F: { return ''}
-        //         default:      { return ''}
-        //     }
-        // }
-        // case Theme.other:{
-        //     switch(colorType){
-        //         case Color.Text: { return ''}
-        //         case Color.Button: { return ''}
-        //         case Color.A: { return ''}
-        //         case Color.B: { return ''}
-        //         case Color.C: { return ''}
-        //         case Color.D: { return ''}
-        //         case Color.E: { return ''}
-        //         case Color.F: { return ''}
-        //         default:      { return ''}
-        //     }
-        // }
+        case Theme.light:{
+            switch(colorType){
+                case Color.Text: { returnColor = 'ivory' ; break}
+                case Color.textHeader: { returnColor = 'ivory' ; break}
+                case Color.textTitle: { returnColor = 'ivory' ; break}
+                case Color.Button: { returnColor = 'chocolate' ; break}
+                case Color.InputText: { returnColor ='linen'; break}
+                case Color.ModalBackground: { returnColor = '#96D65E'}
+                case Color.ModalInner: { returnColor = '#ffffff'}
+                case Color.primaryColor: { returnColor = '#5B995A' ; break}
+                case Color.SecondaryColor: { returnColor = '#824026' ; break}
+                case Color.TertiaryColor: { returnColor = '#12FF5A' ; break}
+                default:      { returnColor = '#ffffff' ; break}
+            }
+        }
+        case Theme.dark:{
+            switch(colorType){
+                case Color.Text: { returnColor = 'ivory' ; break}
+                case Color.textHeader: { returnColor = 'ivory' ; break}
+                case Color.textTitle: { returnColor = 'ivory' ; break}
+                case Color.Button: { returnColor = 'chocolate' ; break}
+                case Color.InputText: { returnColor ='linen'; break}
+                case Color.ModalBackground: { returnColor = '#96D65E'}
+                case Color.ModalInner: { returnColor = '#ffffff'}
+                case Color.primaryColor: { returnColor = '#5B995A' ; break}
+                case Color.SecondaryColor: { returnColor = '#824026' ; break}
+                case Color.TertiaryColor: { returnColor = '#12FF5A' ; break}
+                default:      { returnColor = '#ffffff' ; break}
+            }
+        }
+        case Theme.hacker:{
+            switch(colorType){
+                case Color.Text: { returnColor = 'ivory' ; break}
+                case Color.textHeader: { returnColor = 'ivory' ; break}
+                case Color.textTitle: { returnColor = 'ivory' ; break}
+                case Color.Button: { returnColor = 'chocolate' ; break}
+                case Color.InputText: { returnColor ='linen'; break}
+                case Color.ModalBackground: { returnColor = '#96D65E'}
+                case Color.ModalInner: { returnColor = '#ffffff'}
+                case Color.primaryColor: { returnColor = '#5B995A' ; break}
+                case Color.SecondaryColor: { returnColor = '#824026' ; break}
+                case Color.TertiaryColor: { returnColor = '#12FF5A' ; break}
+                default:      { returnColor = '#ffffff' ; break}
+            }
+        }
         default:{
             switch(colorType){
-                case Color.Text: { return ''}
-                case Color.Button: { return ''}
-                case Color.Modal: { return '#aaaaaa'}
-                case Color.InputText: { return '#aaaaaa'}
-                case Color.B: { return ''}
-                case Color.C: { return ''}
-                case Color.D: { return ''}
-                case Color.E: { return ''}
-                case Color.F: { return ''}
-                default:      { return ''}
+                case Color.Text: { returnColor = 'ivory' ; break}
+                case Color.textHeader: { returnColor = 'ivory' ; break}
+                case Color.textTitle: { returnColor = 'ivory' ; break}
+                case Color.Button: { returnColor = 'chocolate' ; break}
+                case Color.InputText: { returnColor ='linen'; break}
+                case Color.ModalBackground: { returnColor = '#96D65E'}
+                case Color.ModalInner: { returnColor = '#ffffff'}
+                case Color.primaryColor: { returnColor = '#5B995A' ; break}
+                case Color.SecondaryColor: { returnColor = '#824026' ; break}
+                case Color.TertiaryColor: { returnColor = '#12FF5A' ; break}
+                default:      { returnColor = '#ffffff' ; break}
             }
         }
     }
+    if(Platform.OS == "android"){ return `${returnColor }`}
+    else return returnColor 
 
 }
