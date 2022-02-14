@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { SafeAreaView } from 'react-native';
-import { StyleSheet, Text, View } from 'react-native';
+import { Dimensions, Platform, SafeAreaView } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 import { Employee } from './classes-interface/api-entities';
 import { appContext, AppContextInterface } from './classes-interface/app-conext';
 import NavBar from './Components/children/nav-bar';
@@ -11,7 +11,8 @@ import ProblemView from './Components/pages/problem-view';
 import RoomService from './Components/pages/room-service';
 import ViewEmployeeStatus from './Components/pages/view-employee-status';
 import BasicText from './SafariSolaceStyleTools/basictext';
-import { Theme } from './SafariSolaceStyleTools/colorstyle';
+import PixelSpacer from './SafariSolaceStyleTools/pixel-spacer';
+import { Theme } from './SafariSolaceStyleTools/styleconfig';
 import { themeContext, ThemeContextInterface } from './SafariSolaceStyleTools/themecontext';
 
 export default function App() {
@@ -49,15 +50,48 @@ export default function App() {
     }
   }
 
+  const isWeb = Platform.OS == "web"
+  /** Logo scaling factor for platform */
+  function getLS(){
+    if(isWeb)return 3
+    else return 2
+  }
+
+  function WebMainSpacer(){
+    if(Platform.OS == "web") {return<PixelSpacer width={Dimensions.get("screen").width*0.60} height={1}/> }
+    else{return <></>}
+  }
+  function MobileHeaderSpacer(){
+    if(Platform.OS == "web") return <></>
+    else{
+      switch(pageIndex){
+        case 0:{ return <></>}
+        case 1:{ return <PixelSpacer height={Dimensions.get("screen").height*0.9} width={1}/> }
+        case 2:{ return <PixelSpacer height={Dimensions.get("screen").height*1.5} width={1}/>}
+        case 3:{ return <></>}
+        case 4:{ return <></>}
+        case 5:{ return <PixelSpacer height={Dimensions.get("screen").height*1} width={1}/>}
+
+      }
+    }
+  }
+
   return (
     <View style={styles.container}>
+      <SafeAreaView >
       <appContext.Provider value = {initContext}>
         <themeContext.Provider value = { themeContextObject }>
-          <SafeAreaView>
-          <SwitchPage/>
-          </SafeAreaView>
+          <View style={{flexDirection:"row"}}>
+            <View style={{flexDirection:"column", alignItems:"center", justifyContent:"center"}}>
+                <WebMainSpacer/>
+                <MobileHeaderSpacer/>
+                <Image style={{height:64*getLS(),width:64*getLS(),margin:10}} source={ require('./assets/Sale.png') }/>
+                <SwitchPage/>
+            </View>
+          </View>
         </themeContext.Provider>
       </appContext.Provider>
+      </SafeAreaView>
     </View>
   );
 }

@@ -3,7 +3,8 @@ import { View } from "react-native";
 import { appContext } from "../../classes-interface/app-conext";
 import employeeAPIHandler from "../../classes-interface/employeehandler";
 import BasicButton from "../../SafariSolaceStyleTools/basicbutton";
-import BasicText from "../../SafariSolaceStyleTools/basictext";
+import BasicText, { TextType } from "../../SafariSolaceStyleTools/basictext";
+import GetColor, { borderRadius, Color, margin, paddingRadius } from "../../SafariSolaceStyleTools/styleconfig";
 
 
 
@@ -35,8 +36,9 @@ export default function ClockingScreen(){
     }
 
     return(
-        <View>
-            <BasicText text={changeClockText()}/>
+        <View style={{borderRadius:borderRadius(), margin:margin(), padding:paddingRadius(), backgroundColor:GetColor(Color.SecondaryColor)}}>
+            <BasicText text={"Clock Status"} textType={TextType.Title}/>
+            <BasicText text={changeClockText()} textType={TextType.Header} textAlign={"center"}/>
             <BasicButton title={'Change Status'} onPress={changClockStatus}/>
         </View>)
 

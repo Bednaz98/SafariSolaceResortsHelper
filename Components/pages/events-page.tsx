@@ -3,6 +3,8 @@ import { FlatList, ScrollView, View, Text } from "react-native"
 import { Event } from "../../classes-interface/api-entities"
 import EventAPIHandler, { EventHandlerInterface } from "../../classes-interface/eventhandler"
 import BasicButton from "../../SafariSolaceStyleTools/basicbutton"
+import BasicText, { TextType } from "../../SafariSolaceStyleTools/basictext"
+import GetColor, { borderRadius, Color, margin, paddingRadius } from "../../SafariSolaceStyleTools/styleconfig"
 import CreateEventOption from "../children/create-event-option"
 import FormatSingleEvent from "../children/format-single-event"
 import GetEventByID from "../children/get-event-by-ID"
@@ -52,10 +54,10 @@ export default function EventsPage(){
         )
     }
     return(
-        <>
-            <GetEventByID setFilteredEventID={setFilteredEventID}/>
-            <CreateEventOption allEvents={allEvents} setAllEvents={setAllEvents}/>
-            <FormattedEventsList/>
-        </>
-    )
+        <View >
+                <BasicText text={"Manage events"} textType={TextType.Title}/>
+                <GetEventByID setFilteredEventID={setFilteredEventID}/>
+                <CreateEventOption allEvents={allEvents} setAllEvents={setAllEvents}/>
+                <FormattedEventsList/>
+        </View>)
 }

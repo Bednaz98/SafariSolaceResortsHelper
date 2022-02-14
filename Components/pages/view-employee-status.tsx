@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react"
-import { View } from "react-native"
+import React, { useEffect, useState } from "react"
+import { Dimensions, View } from "react-native"
 import { Employee, WorkLog } from "../../classes-interface/api-entities"
 import employeeAPIHandler, { EmployeeHandlerInterface } from "../../classes-interface/employeehandler"
-import BasicText from "../../SafariSolaceStyleTools/basictext"
+import BasicText, { TextType } from "../../SafariSolaceStyleTools/basictext"
+import PixelSpacer from "../../SafariSolaceStyleTools/pixel-spacer"
+import GetColor, { borderRadius, Color, margin, paddingRadius } from "../../SafariSolaceStyleTools/styleconfig"
 import { GetDateFromNum } from "../children/event-date-formatting"
 
 export default function ViewEmployeeStatus(){
@@ -30,13 +32,19 @@ export default function ViewEmployeeStatus(){
 
     function PreparedWorkLogs(){
         console.log('worklog state',worklogsState)
-        const loglist = worklogsState.map((worklog, key)=>{return<BasicText key={key} text={`NAME: ${LinkEmployee(worklog.wId)}\nSTATUS: ${worklog.type}\nTIMESTAMP: ${GetDateFromNum(worklog.timestamp)}\n\n`}/>})
+        const loglist = worklogsState.map((worklog, key)=>{
+            return(
+                <View style={{backgroundColor:GetColor(Color.TertiaryColor), borderRadius:borderRadius(), margin:margin(), padding:paddingRadius()}}>
+                    <BasicText key={key} text={`NAME: ${LinkEmployee(worklog.wId)}\nSTATUS: ${worklog.type}\nTIMESTAMP: ${GetDateFromNum(worklog.timestamp)}`}/>
+                </View>)})
         //console.log(loglist)
         return (<View>{loglist}</View>)
     }
 
     return(<>  
-        <BasicText text={'EMPLOYEE WORK LOGS\n\n'}/>
-        <PreparedWorkLogs/>
+        <BasicText text={'Employee Clock Status'} textType={TextType.Title}/>
+        <View style={{backgroundColor:GetColor(Color.SecondaryColor), borderRadius:borderRadius()}}>
+            <PreparedWorkLogs/>
+        </View>
     </>)
 }

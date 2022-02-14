@@ -1,6 +1,9 @@
+import React from "react"
+import { View } from "react-native"
 import { Event as Evvent } from "../../classes-interface/api-entities"
 import BasicButton from "../../SafariSolaceStyleTools/basicbutton"
 import BasicText from "../../SafariSolaceStyleTools/basictext"
+import GetColor, { borderRadius, Color, margin, paddingRadius } from "../../SafariSolaceStyleTools/styleconfig"
 import FormattedTime from "./event-date-formatting"
 
 
@@ -20,7 +23,8 @@ export default function FormatSingleEvent(props:{event: Evvent, index:number, al
         props.setAllEvents([...newEventList])
     }
 
-    return (<>
+    return (
+        <View style={{borderRadius:borderRadius(), margin:margin(), padding:paddingRadius(), backgroundColor:GetColor(Color.SecondaryColor)}}>
         {props.filter === id || !props.filter ?
         <>
             <BasicText text={`\n\n Event ${props.index + 1}`}/>
@@ -36,6 +40,5 @@ export default function FormatSingleEvent(props:{event: Evvent, index:number, al
 
         :
         
-        null}
-    </>)
+        null}</View>)
 }

@@ -86,7 +86,7 @@ export default function GetColor(colorType:Color){
                 case Color.ModalInner: { returnColor = '#ffffff'}
                 case Color.primaryColor: { returnColor = '#5B995A' ; break}
                 case Color.SecondaryColor: { returnColor = '#824026' ; break}
-                case Color.TertiaryColor: { returnColor = '#12FF5A' ; break}
+                case Color.TertiaryColor: { returnColor = '#13993b' ; break}
                 default:      { returnColor = '#ffffff' ; break}
             }
         }
