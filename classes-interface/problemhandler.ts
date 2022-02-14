@@ -13,7 +13,7 @@ export interface ProblemHandlerInterface{
 
 export default class ProblemAPIHandler implements ProblemHandlerInterface{
     /////////////////////////////////////////////
-    private useURL:string = "http://20.124.74.192:3000";
+    private useURL:string = "http://20.121.72.15:3000";
     private devMode:boolean = false;
     private IndexURL =0;
     //constructor

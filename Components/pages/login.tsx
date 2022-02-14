@@ -14,14 +14,14 @@ export default function LoginPage(props) {
   const context: AppContextInterface = useContext(appContext)
 
   async function tryLogin(userName:string, password:string) {
-    const employee = new employeeAPIHandler(true);
+    const employee = new employeeAPIHandler(false);
     
     const response = await employee.login(userName, password);
     const emp = response;
     console.log(emp);
-    if(emp.password === password && emp.username === userName){
+    setPage();
+    if(emp.username === userName && emp.password === password){     
       context.setUser(emp);
-      setPage();
     }
   }
 

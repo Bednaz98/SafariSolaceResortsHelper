@@ -21,8 +21,9 @@ export interface EmployeeHandlerInterface{
 
 export default class employeeAPIHandler implements EmployeeHandlerInterface{
     /////////////////////////////////////////////
-    private useURL:string = "http://20.124.74.192:3000";
+    private useURL:string = "http://20.121.72.15:3000";
     private devMode:boolean = false;
+    private loginUrl = "https://a7168249-c922-4d0c-b90a-f3738cc27afa.mock.pstmn.io"
     private IndexURL =0;
     /* private context = useContext(appContext); */
     //constructor
@@ -72,7 +73,7 @@ export default class employeeAPIHandler implements EmployeeHandlerInterface{
 
     async login(username:string, password:string) {
         try {
-            const response = await axios.patch(this.getURL()+"/login",{
+            const response = await axios.patch(this.getURL()+ "/login",{
                 username:username,
                 password:password
             });

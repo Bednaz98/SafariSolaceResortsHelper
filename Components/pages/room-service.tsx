@@ -18,7 +18,7 @@ export default function RoomService(){
     const dummyArray:ServiceRequest[] = []
     const [data, setData] = useState(dummyArray);
     const [sort, setSort] = useState(sortType.All)
-    const handler = new RoomServiceHandlerAPIHandler(true)
+    const handler = new RoomServiceHandlerAPIHandler(false)
     const [displayList, setDisplayList] = useState([<></>])
     
 

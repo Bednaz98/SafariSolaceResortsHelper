@@ -21,7 +21,7 @@ export default function ProblemView(){
 
     const [problemList, setProblemList] = useState([... testproblemList]);
 
-    const handler: ProblemHandlerInterface = new ProblemAPIHandler(true);
+    const handler: ProblemHandlerInterface = new ProblemAPIHandler(false);
 
     //useEffect(()=>{setter()},[]);
 

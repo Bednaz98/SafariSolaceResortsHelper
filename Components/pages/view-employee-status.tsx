@@ -10,7 +10,7 @@ import { GetDateFromNum } from "../children/event-date-formatting"
 export default function ViewEmployeeStatus(){
     //get employee statuses
     //prepare render list worklogs
-    const handler: EmployeeHandlerInterface = new employeeAPIHandler(true)
+    const handler: EmployeeHandlerInterface = new employeeAPIHandler(false)
     const [worklogsState, setWorkLogs] = useState<WorkLog[]>([])
     useEffect(()=>{GetWorkLogs()}, [])
 

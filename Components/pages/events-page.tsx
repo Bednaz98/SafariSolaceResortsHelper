@@ -10,7 +10,7 @@ import FormatSingleEvent from "../children/format-single-event"
 import GetEventByID from "../children/get-event-by-ID"
 
 export default function EventsPage(){
-    const eventhandle: EventHandlerInterface = new EventAPIHandler(true)
+    const eventhandle: EventHandlerInterface = new EventAPIHandler(false)
     const dummyEvents: Event[] = [] /* = [{
             id: 'dummyevent1',
             title: 'title',
