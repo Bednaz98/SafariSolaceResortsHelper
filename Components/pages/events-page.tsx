@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { FlatList, ScrollView, View, Text } from "react-native"
 import { Event } from "../../classes-interface/api-entities"
 import EventAPIHandler, { EventHandlerInterface } from "../../classes-interface/eventhandler"
@@ -9,7 +9,7 @@ import GetEventByID from "../children/get-event-by-ID"
 
 export default function EventsPage(){
     const eventhandle: EventHandlerInterface = new EventAPIHandler(true)
-    const dummyEvents: Event[] = [{
+    const dummyEvents: Event[] = [] /* = [{
             id: 'dummyevent1',
             title: 'title',
             desc: 'desc',
@@ -27,9 +27,19 @@ export default function EventsPage(){
             location: 'location2',
             status: "Cancelled"
         }
-    ]
+    ] */
     const [allEvents, setAllEvents] = useState(dummyEvents)
     const [filteredEventID, setFilteredEventID] = useState<string>("")
+
+    useEffect(() => {
+        setAll()
+    }), []
+
+    async function setAll(){
+        const events = await eventhandle.getAllEvents()
+        setAllEvents(events)
+    }
+
     //map all events into a scroll list
     function FormattedEventsList(){
         const formattedEvents = allEvents.map((event, index) => {return <FormatSingleEvent event={event} index={index} allEvents={allEvents} setAllEvents={setAllEvents} filter={filteredEventID}/>})        

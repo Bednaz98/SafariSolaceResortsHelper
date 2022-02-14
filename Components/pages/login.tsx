@@ -15,23 +15,21 @@ export default function LoginPage(props) {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
-  async function tryLogin(props) {
-
+  async function tryLogin() {
     const employee = new employeeAPIHandler(true);
     
     const response = await employee.login(userName, password);
     const emp = response;
     console.log(emp);
-
-    await AsyncStorage.setItem("user", emp.username);
-    await AsyncStorage.setItem("password", emp.password);
     if(emp.password === password && emp.username === userName){
-    setPage();
+      context.setUser(emp);
+      setPage();
     }
   }
 
   function setPage(){
     props.setPage(1);
+    alert("Be sure to clock in! ");
   }
 
 

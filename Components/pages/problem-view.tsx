@@ -19,15 +19,14 @@ export default function ProblemView(){
     //     status: "Unreviewed"}
     // ]
 
-    const [problemList, setProblemList] = useState(null);
+    const [problemList, setProblemList] = useState([]);
 
-    const handler: ProblemHandlerInterface = new ProblemAPIHandler();
+    const handler: ProblemHandlerInterface = new ProblemAPIHandler(true);
 
-    useEffect(()=>{setter},[]);
+    useEffect(()=>{setter()},[]);
 
     async function setter(){
         const response: Problem[] = await handler.getAllProblems();
-        console.log(response);
         const pendingProblems: Problem[] = response.filter(p => p.status === "Unreviewed"); 
         setProblemList(pendingProblems);
     }

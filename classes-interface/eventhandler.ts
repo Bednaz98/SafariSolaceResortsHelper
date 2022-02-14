@@ -6,7 +6,7 @@ import { appContext } from "./app-conext";
 
 
 export interface EventHandlerInterface{
-    getAllEvents(): Promise<Event>
+    getAllEvents(): Promise<Event[]>      
     /**put -> cancel*/
     cancelEvent(id:string): Promise<Event>
     /**put -> update*/
@@ -38,12 +38,12 @@ export default class EventAPIHandler implements EventHandlerInterface{
     * it will return the production URL, if true, it will return 'http//localhost:[port]'*/
     private getURL(){
         if(!this.devMode){ return this.useURL} //postman mock
-        else return "https://d52f8991-f077-4c37-a337-e3679d255a88.mock.pstmn.io"
+        else return "https://a7168249-c922-4d0c-b90a-f3738cc27afa.mock.pstmn.io"
     }
 
-    async getAllEvents() {
+    async getAllEvents(): Promise<Event[]> {
         const response = await axios.get(this.getURL()+"/events");
-        const data:Event = response.data;
+        const data:Event[] = response.data;
         return data;    
     }
     
